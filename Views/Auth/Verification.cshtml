@@ -1,0 +1,171 @@
+﻿@{
+    Layout = "~/Views/Shared/_FullLayout.cshtml";
+    ViewData["FullTitle"] = "Verification Page";
+    var mymessage = ViewBag.MyMessage;
+}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+
+        .container {
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .code-inputs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+            .code-inputs input[type="text"] {
+                width: 40px;
+                height: 40px;
+                padding: 5px;
+                text-align: center;
+                font-size: 16px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+            }
+
+        .submit-btn, .resend-btn {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 3px;
+            color: #fff;
+            background-color: #007bff;
+            cursor: pointer;
+        }
+
+            .resend-btn[disabled] {
+                background-color: #ccc;
+                cursor: not-allowed;
+            }
+
+        .countdown {
+            font-size: 14px;
+            color: #888;
+            margin-top: 10px;
+        }
+    </style>
+<div class="container-scroller">
+    <div class="content-wrapper d-flex align-items-center auth px-0">
+        <div class="row w-100 mx-0">
+            <div class="card col-lg-4 mx-auto">
+                <div class="card-body auth-form-light text-left py-5 px-4 px-sm-5">
+                    <form class="pt-3" id="loginForm" action="/Auth/Index">
+                        @Html.AntiForgeryToken()
+                        <div class="brand-logo">
+                            <img src="../../images/logo.svg" alt="logo">
+                        </div>
+                        <h4>
+                            Hello! Welcome to EduSpace
+
+                        </h4>
+                        <h6 class="font-weight-light">
+                            Enter the Verification Code
+                        </h6>
+                        <div class="code-inputs">
+                            <input type="text" id="digit-1" maxlength="1">
+                            <input type="text" id="digit-2" maxlength="1">
+                            <input type="text" id="digit-3" maxlength="1">
+                            <input type="text" id="digit-4" maxlength="1">
+                            <input type="text" id="digit-5" maxlength="1">
+                            <input type="text" id="digit-6" maxlength="1">
+                        </div>
+
+                        <div class="mt-3">
+                            <button type="button" class="btn btn-light font-weight-medium auth-form-btn">Resend</button>
+
+                            <button type="submit" class="btn btn-primary font-weight-medium auth-form-btn">Submit</button>
+                        </div>
+
+
+                        <div class="countdown">Remaining time: <span id="countdown-timer">60</span> seconds</div>
+                    </form>
+               
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script>
+        // Code input fields
+        var digit1 = document.getElementById('digit-1');
+        var digit2 = document.getElementById('digit-2');
+        var digit3 = document.getElementById('digit-3');
+        var digit4 = document.getElementById('digit-4');
+        var digit5 = document.getElementById('digit-5');
+        var digit6 = document.getElementById('digit-6');
+
+        digit1.addEventListener('input', function () {
+            if (this.value.length >= 1) {
+                digit2.focus();
+            }
+        });
+
+        digit2.addEventListener('input', function () {
+            if (this.value.length >= 1) {
+                digit3.focus();
+            }
+        });
+
+        digit3.addEventListener('input', function () {
+            if (this.value.length >= 1) {
+                digit4.focus();
+            }
+        });
+
+        digit4.addEventListener('input', function () {
+            if (this.value.length >= 1) {
+                digit5.focus();
+            }
+        });
+
+        digit5.addEventListener('input', function () {
+            if (this.value.length >= 1) {
+                digit6.focus();
+            }
+        });
+
+        digit6.addEventListener('input', function () {
+            if (this.value.length >= 1) {
+                digit6.blur(); // Optional: Remove focus from the last input field
+            }
+        });
+
+        // Countdown timer
+        var timeLeft = 60;
+        var countdownTimer = document.getElementById('countdown-timer');
+
+        function updateTimer() {
+            countdownTimer.innerText = timeLeft;
+            if (timeLeft === 0) {
+                // Enable the resend button
+                document.querySelector('.resend-btn').removeAttribute('disabled');
+            } else {
+                timeLeft--;
+                setTimeout(updateTimer, 1000);
+            }
+        }
+
+        updateTimer();
+    </script>
+

@@ -1,0 +1,223 @@
+﻿@{
+    Layout = "~/Views/Shared/_FullLayout.cshtml";
+    ViewData["FullTitle"] = "Signup";
+    var mymessage = ViewBag.MyMessage;
+}
+
+
+            <div class="container-fluid page-body-wrapper full-page-wrapper">
+                <div class="content-wrapper d-flex align-items-center auth px-0">
+                    <div class="row w-100 mx-0">
+            <div class="card col-lg-8 mx-auto">
+                <div class="card-body">
+                    <form id="myForm"  class="form-sample" method="post" asp-controller="auth" asp-action="signup">
+                        @Html.AntiForgeryToken()
+                        <div class="brand-logo">
+                            <img src="../../images/logo.svg" alt="logo">
+                        </div>
+                        <h4 class="card-title">Signup</h4>
+                        <h4>
+                            Hello! Welcome to EduSpace LMS
+                        </h4>
+                       
+                        <fieldset id="fieldset1">
+                            <p class="card-description">
+                                Enter the Detail
+                            </p>
+                            <div class="form-group row">
+                                <div class="col">
+                                    <label>Full Name</label>
+                                    <div id="the-basics">
+                                        <input type="email" class="form-control" id="exampleInputEmail1" name="LoginEmailInput" placeholder="Full Name">
+
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label>Email Address</label>
+                                    <div id="bloodhound">
+                                        <input type="email" class="form-control" id="exampleInputEmail1" name="LoginEmailInput" placeholder="Email Address">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col">
+                                    <label for="exampleInputPassword2 ">Password</label>
+                                    <div id="the-basics">
+                                        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label for="exampleInputConfirmPassword2">Re-Password</label>
+                                    <div id="bloodhound">
+                                        <input type="password" class="form-control" id="exampleInputConfirmPassword2" placeholder="Password">
+                                    </div>
+                                </div>
+                            </div>
+                          
+                            <div class="mt-3">
+                                <button type="button" id="nextButton1" class="btn btn-primary font-weight-medium auth-form-btn">Next</button>
+                            </div>
+                        </fieldset>
+
+                        <fieldset id="fieldset2" class="hidden">
+                            <p class="card-description">
+                                Enter the Personal Information
+                            </p>
+                            <div class="form-group row">
+                                <div class="col">
+                                    <label>File upload</label>
+                                    <input type="file" id="imageInput" name="img[]" class="file-upload-default">
+                                    <div class="input-group col-xs-12">
+                                        <input type="text" class="form-control file-upload-info" placeholder="Upload Image">
+                                        <span class="input-group-append">
+                                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                  
+                                    <div id="imagePreview"></div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col">
+                                <label for="exampleSelectGender">Role</label>
+                                <select class="form-control" id="exampleSelectGender">
+                                        <option value="" selected>Select Role</option>
+                                        <option value ="1">Administrator</option>
+                                        <option value ="2">Teacher</option>
+                                </select>
+                                </div>
+                                <div class="col">
+                                    <label for="exampleSelectGender">Gender</label>
+                                    <select class="form-control" id="exampleSelectGender">
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col">
+                                    <label>File upload</label>
+                                    <input type="file" id="fileInput1" name="img[]" class="file-upload-default" accept=".pdf">
+                                    <div class="input-group col-xs-12">
+                                        <input type="text" class="form-control file-upload-info"  placeholder="Upload CV or Resume">
+                                        <span class="input-group-append">
+                                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label>Contact Number</label>
+                                    <div id="the-basics">
+                                        <input type="number" class="form-control" id="exampleInputEmail1" name="LoginEmailInput" placeholder="Contact Number">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleTextarea1">Present Address</label>
+                                <textarea class="form-control" id="exampleTextarea1" rows="2"></textarea>
+                            </div>
+
+                          
+                            <div class="mt-3">
+                                <button type="button" id="backButton2" class="btn btn-light font-weight-medium auth-form-btn">Back</button>
+                        
+                                <button type="submit" id="nextButton2" onclick="" class="btn btn-primary font-weight-medium auth-form-btn">Submit</button>
+                            </div>
+                        </fieldset>
+                    </form>
+
+                   
+                 
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+    .preview-container {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .preview-image {
+        max-width: 120px;
+        max-height: 120px;
+        margin-bottom: 10px;
+    }
+    fieldset {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+        fieldset.visible {
+            opacity: 1;
+        }
+
+    .hidden {
+        display: none;
+    }
+
+    </style>
+    <script>
+
+    document.getElementById('imageInput').addEventListener('change', function (event) {
+        var imagePreview = document.getElementById('imagePreview');
+        imagePreview.innerHTML = ''; // Clear previous preview, if any
+
+        var file = event.target.files[0];
+
+        if (file && file.type.startsWith('image/')) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                var image = document.createElement('img');
+                image.classList.add('preview-image');
+                image.src = e.target.result;
+
+                imagePreview.appendChild(image);
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Get references to the form, fieldsets, and buttons
+    var myForm = document.getElementById("myForm");
+    var fieldsets = myForm.getElementsByTagName("fieldset");
+    var nextButtons = myForm.querySelectorAll("#nextButton1, #nextButton2");
+    var backButton2 = document.getElementById("backButton2");
+ 
+
+    // Add click event listeners to the buttons
+    nextButtons.forEach(function (nextButton, index) {
+        nextButton.addEventListener("click", function () {
+            navigateFieldset(index, index + 1);
+        });
+    });
+
+    backButton2.addEventListener("click", function () {
+        navigateFieldset(1, 0);
+    });
+
+ 
+    function navigateFieldset(fromIndex, toIndex) {
+        var fromFieldset = fieldsets[fromIndex];
+        var toFieldset = fieldsets[toIndex];
+
+        fromFieldset.classList.remove("visible");
+        toFieldset.classList.add("visible");
+
+        setTimeout(function () {
+            fromFieldset.style.display = "none";
+            toFieldset.style.display = "block";
+        }, 300);
+    }
+
+    // Show the first fieldset
+    fieldsets[0].classList.add("visible");
+
+    </script>

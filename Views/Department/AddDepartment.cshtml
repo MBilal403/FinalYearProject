@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "AddDepartment";
+}
+<div class="row" style="padding-top: 2%;">
+    <div class="col-8 grid-margin stretch-card align-content-center">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Add Department</h4>
+                <p class="card-description">
+                    Detal About how to add department with validation
+                </p>
+                <form class="forms-sample" asp-action="AddDepartment" asp-controller="Department" method="post">
+                    <div class="form-group">
+                        <label for="exampleInputName1">Department Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleSelectGender">Incharge</label>
+                        <select class="form-control" id="exampleSelectGender">
+                            <option>Sir Younus</option>
+                            <option>Ms Nadia Yousaf</option>
+                        </select>
+                    </div>
+               
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light" asp-action="ViewDepartments" asp-controller="Department">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

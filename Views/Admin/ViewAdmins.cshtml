@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewData["Title"] = "ViewAdmins";
+}
+
+<div class="col-lg-12 grid-margin stretch-card" style="padding-top: 2%">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Administrator Detail</h4>
+            <p class="card-description">
+                Add class <code>.table-striped</code>
+            </p>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                Profile Picture
+                            </th>
+                            <th>
+                                First name
+                            </th>
+                            <th>
+                                Department Name
+                            </th>
+                            <th>
+                                Created date
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="py-1">
+                                <img src="../../images/faces/face1.jpg" alt="image">
+                            </td>
+                            <td>
+                                Rana Qaiser
+                            </td>
+                            <td>
+                                Information Technology
+                            </td>
+                            <td>
+                                May 15, 2015
+                            </td>
+                            <td>
+                                <a class="btn btn-info btn-sm" asp-action="EditDepartment" asp-controller="Department">Edit</a> |
+                                <a class="btn btn-danger btn-sm" asp-action="DeleteDepartment" asp-controller="Department">Delete</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="py-1">
+                                <img src="../../images/faces/face1.jpg" alt="image">
+                            </td>
+                            <td>
+                                Rana Qaiser
+                            </td>
+                            <td>
+                                Information Technology
+                            </td>
+                            <td>
+                                May 15, 2015
+                            </td>
+                            <td>
+                                <a class="btn btn-info btn-sm" asp-action="EditDepartment" asp-controller="Department">Edit</a> |
+                                <a class="btn btn-danger btn-sm" asp-action="DeleteDepartment" asp-controller="Department">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

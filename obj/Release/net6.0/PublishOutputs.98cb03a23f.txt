@@ -1,0 +1,7 @@
+C:\Users\Muhammad Subhan\source\repos\FYP\obj\Release\net6.0\PubTmp\Out\FYP.exe
+C:\Users\Muhammad Subhan\source\repos\FYP\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
+C:\Users\Muhammad Subhan\source\repos\FYP\obj\Release\net6.0\PubTmp\Out\appsettings.json
+C:\Users\Muhammad Subhan\source\repos\FYP\obj\Release\net6.0\PubTmp\Out\FYP.dll
+C:\Users\Muhammad Subhan\source\repos\FYP\obj\Release\net6.0\PubTmp\Out\FYP.deps.json
+C:\Users\Muhammad Subhan\source\repos\FYP\obj\Release\net6.0\PubTmp\Out\FYP.runtimeconfig.json
+C:\Users\Muhammad Subhan\source\repos\FYP\obj\Release\net6.0\PubTmp\Out\FYP.pdb

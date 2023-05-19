@@ -1,0 +1,159 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+    ViewData["Title"] = "Dashboard";
+
+}
+<div class="row">
+            <div class="col-md-12 grid-margin">
+                <div class="row">
+                     <div class="weather-info">
+                        <div class="d-flex" id="myweatherdetail">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 grid-margin">
+                <div class="row">
+                    <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                        <h3 class="font-weight-bold">Welcome <span style="color: #54528e;">Muhammad Bilal </span></h3>
+                        <h6 class="font-weight-normal mb-0">All systems are running smoothly! </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card tale-bg">
+                    <div class="card-people mt-auto " style="padding-top: 0%;">
+                        <img src="/images/dashboard/people.svg" alt="people">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 grid-margin transparent">
+                <div class="row">
+                    <div class="col-md-6 mb-4 stretch-card transparent">
+                        <div class="card card-tale">
+                            <div class="card-body">
+                                <p class="mb-4">Number of Students</p>
+                                <p class="fs-30 mb-2">000</p>
+                                <p>Date of modification</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4 stretch-card transparent">
+                        <div class="card card-dark-blue">
+                            <div class="card-body">
+                                <p class="mb-4">Number of Teachers</p>
+                                <p class="fs-30 mb-2">000</p>
+                                <p>22.00% (30 days)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+                        <div class="card card-light-blue">
+                            <div class="card-body">
+                                <p class="mb-4">Number of Departments</p>
+                                <p class="fs-30 mb-2">000</p>
+                                <p>2.00% (30 days)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 stretch-card transparent">
+                        <div class="card card-light-danger">
+                            <div class="card-body">
+                                <p class="mb-4">Number of Programs</p>
+                                <p class="fs-30 mb-2">000</p>
+                                <p>0.22% (30 days)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+<footer class="footer">
+    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">2023 © University of the Punjab, Gujranwala Campus. All Rights Reserved <a href="https://pugc.edu.pk/website/" target="_blank">PUGC</a> </span>
+        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Happy Club <i class="ti-heart text-danger ml-1"></i></span>
+    </div>
+    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Mission Respect</a></span>
+    </div>
+</footer>
+        <!-- main-panel ends -->
+
+<script>
+    $(document).ready(function () {
+
+        // Get user's location
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var lata = position.coords.latitude;
+                var lona = position.coords.longitude;
+                console.log('hello');
+                // Make API request
+                $.ajax({
+                    url: 'https://api.openweathermap.org/data/2.5/weather',
+                    method: 'GET',
+                    dataType: 'json',
+                    data: {
+                        lat: position.coords.latitude,
+                        lon: position.coords.longitude,
+                        appid: '433459099826eb3884978bde41f5bd0d',
+                        units: 'metric'
+                    },
+                    success: function (response) {
+                        // Get the location and weather data from the API response
+                        var location = response.name + ', ' + response.sys.country;
+                        var weather = response.weather[0].description;
+                        var temperature = Math.ceil(response.main.temp);
+                        var myhtml =
+                            '<div class="d-flex">' +
+                            '<h2 class="mb-0 font-weight-normal">' + temperature + '<sup> ' + "C" +
+                            ' </sup> </h2> </div>' +
+                            '<div class="ml-2"><h4 ' + 'class="location font-weight-normal"' + '>' + response.name +
+                            '<h6' + ' class="font-weight-normal"' + '>Pakistan</h6>' +
+                            '</div>';
+
+
+                        $('#myweatherdetail').html(myhtml);
+                        // //
+                        // <div class="d-flex">
+                        //   <div>
+                        //     <h2 class="mb-0 font-weight-normal" id="mytemp">31<sup>C</sup></h2>
+                        //   </div>
+                        //   <div class="ml-2">
+                        //     <h4 class="location font-weight-normal" id="myweather" >Gujranwala</h4>
+                        //     <h6 class="font-weight-normal" id="myloc">Pakistan</h6>
+                        //   </div>
+                        //
+                        //   '
+
+                        // Update the HTML with the location and weather data
+                        console.log(location);
+                        console.log(temperature);
+                        $('#mycity').text(location);
+                        $('#weather').text(weather);
+                        $('#mytemp').text(temperature);
+                    },
+                    error: function (error) {
+                        if (error.code == error.PERMISSION_DENIED) {
+
+                            $('#myweatherdetail').html(' ');
+                        }
+                        console.log(error);
+                    }
+                });
+            });
+        }
+    });
+
+</script>
