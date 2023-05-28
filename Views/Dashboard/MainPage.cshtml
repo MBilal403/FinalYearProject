@@ -1,6 +1,5 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
+@using Microsoft.AspNetCore.Identity
 @{
 
     ViewData["Title"] = "Dashboard";
@@ -13,7 +12,6 @@
                         <div class="d-flex" id="myweatherdetail">
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -21,7 +19,7 @@
             <div class="col-md-12 grid-margin">
                 <div class="row">
                     <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                        <h3 class="font-weight-bold">Welcome <span style="color: #54528e;">Muhammad Bilal </span></h3>
+                        <h3 class="font-weight-bold">Welcome <span style="color: #54528e;">@Context.Session.GetString("FullName") </span></h3>
                         <h6 class="font-weight-normal mb-0">All systems are running smoothly! </h6>
                     </div>
                 </div>
@@ -35,7 +33,7 @@
                     </div>
                 </div>
             </div>
-
+  
             <div class="col-md-6 grid-margin transparent">
                 <div class="row">
                     <div class="col-md-6 mb-4 stretch-card transparent">

@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Muhammad Subhan\source\repos\FYP
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Muhammad Subhan/source/repos/FYP/Views/Admin/CreateAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlQWRtaW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Muhammad Subhan/source/repos/FYP/Views/Admin/DetailAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGV0YWlsQWRtaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

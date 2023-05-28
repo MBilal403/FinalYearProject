@@ -3,16 +3,30 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 /*var ConnectionString = "Data Source=DESKTOP-TKFMBUI;Initial Catalog=fyp;Integrated Security=True";
 */// Add services to the container.
+builder.Services.AddDistributedMemoryCache(); // Adds an in-memory cache for storing session data
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Set the session timeout duration
+    options.Cookie.HttpOnly = true; // Ensure the session cookie is only accessible via HTTP
+    options.Cookie.IsEssential = true; // Make the session cookie essential for GDPR compliance
+});
 builder.Services.AddControllersWithViews();
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{ options.CheckConsentNeeded = context => true;
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+ }   );
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 /*builder.Services.AddDbContext<fypContext>(
     options => options.UseSqlServer(ConnectionString)
     );*/
 // Configure JWT authentication
-var tokenKey = Encoding.ASCII.GetBytes("YourTokenKeyHere"); // Replace with your own secret key
+/*var tokenKey = Encoding.ASCII.GetBytes("YourTokenKeyHere"); // Replace with your own secret key
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -29,7 +43,7 @@ builder.Services.AddAuthentication(options =>
         ValidateIssuer = false,
         ValidateAudience = false
     };
-});
+});*/
 
 var app = builder.Build();
 
@@ -43,8 +57,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseSession();
 app.UseRouting();
+app.UseCookiePolicy();
 app.UseAuthentication();
 app.UseAuthorization();
 

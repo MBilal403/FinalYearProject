@@ -1,12 +1,20 @@
 ﻿using FYP.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using NuGet.Common;
+using System.Net.Http;
+using System.Security.Claims;
+using System.Text;
 
 namespace FYP.Controllers
 {
    
     public class AuthController : Controller
     {
+        private string BaseUrl = "https://localhost:7031";
         // GET: AuthController
         public ActionResult Index()
         {
@@ -15,24 +23,71 @@ namespace FYP.Controllers
 
         // POST: AuthController/Login
         [HttpPost]
-        public ActionResult Index(IFormCollection collection)
+        public async  Task<ActionResult> Index(IFormCollection collection) // Login Page
         {
             string email = collection["LoginEmailInput"];
             email = email.ToLower().Trim();
-            string passsword = collection["LoginPasswordInput"];
-
-            StringComparison stringComparison = StringComparison.OrdinalIgnoreCase;
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(passsword))
+            string password = collection["LoginPasswordInput"];
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
                 ViewData["MyMessage"] = "Must be fields filled";
                 return View("Login"); // redirect pr view bag or view data does not work
-            } else if (!email.Contains("@eduspace.com", stringComparison))
-            {
-                ViewBag.MyMessage = "Must be used @eduspace.com";
-                return View("Login");
-            }
+            } 
             else
             {
+                using (HttpClient httpClient = new HttpClient())
+                {
+                    // Send the request and post the response
+                    var loginData = new { Email = email, Password = password };
+                    var jsonRequest = JsonConvert.SerializeObject(loginData);
+                    var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = await httpClient.PostAsync(BaseUrl+ "/auth/Login", content);
+
+
+                    // Check if the response was successful
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // Read the token from the response headers
+                        string jsonResponse = await response.Content.ReadAsStringAsync();
+                        var MyResponse = JsonConvert.DeserializeAnonymousType(jsonResponse, new
+                        {
+                            Token = null as string,
+                            Response = new
+                            {
+                                userId = (int?)null,
+                                email = null as string,
+                                userRole = null as string,
+                                fullname = null as string
+
+                            },
+                            Message = null as string,
+                            isSuccess = (bool?)null
+                        });
+
+                      
+
+                        // Create a ClaimsIdentity and set it as the User's identity
+                        var claimsIdentity = new ClaimsIdentity(new Claim[]
+                         {
+                            new Claim(ClaimTypes.Name, MyResponse!.Response.userId.ToString()!), // Add any additional claims as needed
+                            new Claim(ClaimTypes.Email, MyResponse.Response.email!), // Add any additional claims as needed
+                            new Claim(ClaimTypes.Role, MyResponse.Response.userRole!) // Add any additional claims as needed
+                         },CookieAuthenticationDefaults.AuthenticationScheme
+                         );
+                         
+                           var principal = new ClaimsPrincipal(claimsIdentity);
+                        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal).ConfigureAwait(false);
+                      
+                        HttpContext.Session.SetString("UserId", MyResponse!.Response.userId.ToString()!);
+                        HttpContext.Session.SetString("FullName", MyResponse.Response.fullname!);
+                        HttpContext.Session.SetString("UserRole", MyResponse!.Response.userRole!);
+                        HttpContext.Session.SetString("Token", MyResponse.Token!);
+
+                     
+                        // string token = tokenResponse.Token;
+                    }
+                }
                 return RedirectToAction("index", "Dashboard");
             }
         }

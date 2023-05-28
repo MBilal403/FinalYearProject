@@ -18,7 +18,7 @@ namespace FYP.Controllers
         }
 
         // GET: AdminController/Create
-        public ActionResult Create()
+        public ActionResult CreateAdmin()
         {
             return View();
         }

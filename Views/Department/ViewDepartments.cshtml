@@ -21,21 +21,26 @@
                                 <th>Incharge Name</th>
                                 <th>Administrator Name</th>
                                 <th>Created</th>
-                                <th></th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>Information Technology</td>
-                               
                                 <td>Dr. Naveed Jhamat</td>
                                 <td>Rana Qaiser</td>
                                 <td>12 May 2017</td>
-                                 <td>
+                                <td class="font-weight-small"><div class="badge badge-success">Completed</div></td>
+                          
+                                <td class="font-weight-small"><div class="badge badge-warning">Pending</div></td>
+                            
+                                <td class="font-weight-small"><div class="badge badge-danger">Cancelled</div></td>
+                                <td>
                                     <a class="btn btn-info btn-sm" asp-action="EditDepartment" asp-controller="Department">Edit</a> |
                                     <a class="btn btn-danger btn-sm" asp-action="DeleteDepartment" asp-controller="Department">Delete</a>
                                 </td>
                             </tr>
+                           
                         </tbody>
                     </table>
                 </div>

@@ -10,10 +10,10 @@
             <div class="card col-lg-4 mx-auto">
                 <div class="card-body auth-form-light text-left py-5 px-4 px-sm-5">
                 
-                    <form class="pt-3" id="loginForm" action="/Auth/Index">
+                    <form class="pt-3" id="loginForm" asp-controller="Auth" asp-action="Index" method="post">
                         @Html.AntiForgeryToken()
                           <div class="brand-logo">
-                            <img src="../../images/logo.svg" alt="logo">
+                            <img src="/images/logo.svg" alt="logo">
                           </div>
                               <h4>Hello! Welcome to EduSpace
 
