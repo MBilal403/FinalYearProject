@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\FYP.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\UserImages\\322ae021-b06a-46c6-ab50-debbfe4c9557.jpg",
+      "PackagePath": "staticwebassets\\UserImages\\322ae021-b06a-46c6-ab50-debbfe4c9557.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\UserImages\\8b20e669-e7a7-4574-82b0-c675b626c28e.jpg",
+      "PackagePath": "staticwebassets\\UserImages\\8b20e669-e7a7-4574-82b0-c675b626c28e.jpg"
+    },
+    {
       "Id": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\css\\maps\\vertical-layout-light\\style.css.map",
       "PackagePath": "staticwebassets\\css\\maps\\vertical-layout-light\\style.css.map"
     },

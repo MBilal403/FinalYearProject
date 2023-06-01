@@ -1,4 +1,4 @@
-﻿namespace EduSpaceAPI.Models
+﻿namespace FYP.Models
 {
     public class UserModel
     {

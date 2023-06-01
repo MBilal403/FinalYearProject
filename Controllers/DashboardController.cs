@@ -1,12 +1,13 @@
 ﻿
-using EduSpaceAPI.Helpers;
-using EduSpaceAPI.Models;
+
+using FYP.Models;
 using FYP.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using NuGet.Common;
+using NuGet.DependencyResolver;
 using System.Net.Http.Headers;
 
 namespace FYP.Controllers
@@ -20,13 +21,10 @@ namespace FYP.Controllers
         {
             using (HttpClient httpClient = new HttpClient())
             {
-                try
-                {
-                    string token = HttpContext.Session.GetString("Token");
                     // Set the authorization token in the request headers
-                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer",token );
-                    string id = HttpContext.Session.GetString("UserId");
-                    string apiURl = BaseUrl + "/auth/UserById/" + int.Parse(HttpContext.Session.GetString("UserId")!);
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token")!);
+                    
+                    string apiURl = BaseUrl + "/auth/UserById/" +HttpContext.Session.GetString("UserId")!;
                     // Send the request and get the response
                     HttpResponseMessage response = await httpClient.GetAsync(apiURl);
                     
@@ -37,17 +35,21 @@ namespace FYP.Controllers
 
                         // Process the response as needed
                         // For example, deserialize the JSON response into an object
-                        MyResponse<UserModel> responseObject = JsonConvert.DeserializeObject<MyResponse<UserModel>>(jsonResponse);
-                        ViewData["ImagePath"] = responseObject!.Response!.ImagePath!;
+                        MyResponse<UserModel> responseObject = JsonConvert.DeserializeObject<MyResponse<UserModel>>(jsonResponse)!;
+                      //  ViewData["ImagePath"] =  responseObject!.Response!.UserImage!;
+
+
+                    /*        string mewpath = imagepath.Replace("\\", "/");
+                        string path = mewpath.Replace(@"C:\Users\Muhammad Subhan\source\repos\EduSpaceAPI\wwwroot", "");
+
+                     = path;
+                       */
+
+
                         // Use the responseObject as needed
                     }
 
-                }
-                catch (HttpRequestException ex)
-                {
-                    Console.WriteLine($"An error occurred: {ex.Message}");
-                    // Handle the error appropriately
-                }
+
             }
 
             return View("MainPage");

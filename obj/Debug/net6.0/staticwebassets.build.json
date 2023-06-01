@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vJRkXN3yWxVYk+2Crm4u9cI83nsZadDVVnGmUqlQAIE=",
+  "Hash": "jYP9LJundGHSakPx2TMFqpvADMR/j5hkYaIIgIBJ9HE=",
   "Source": "FYP",
   "BasePath": "_content/FYP",
   "Mode": "Default",
@@ -6169,6 +6169,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\UserImages\\322ae021-b06a-46c6-ab50-debbfe4c9557.jpg",
+      "SourceId": "FYP",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\",
+      "BasePath": "_content/FYP",
+      "RelativePath": "UserImages/322ae021-b06a-46c6-ab50-debbfe4c9557.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UserImages\\322ae021-b06a-46c6-ab50-debbfe4c9557.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\UserImages\\8b20e669-e7a7-4574-82b0-c675b626c28e.jpg",
+      "SourceId": "FYP",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\",
+      "BasePath": "_content/FYP",
+      "RelativePath": "UserImages/8b20e669-e7a7-4574-82b0-c675b626c28e.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UserImages\\8b20e669-e7a7-4574-82b0-c675b626c28e.jpg"
     },
     {
       "Identity": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\vendors\\chart.js\\Chart.min.js",

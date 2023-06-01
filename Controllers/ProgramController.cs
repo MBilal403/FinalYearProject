@@ -8,6 +8,7 @@ namespace FYP.Controllers
         // GET: ProgramController
         public ActionResult Index()
         {
+
             return View();
         }
 

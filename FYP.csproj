@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\js\MyJS.js" />
+    <Content Remove="wwwroot\UserImages\DefaultImage.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +28,7 @@
 
   <ItemGroup>
     <None Include="wwwroot\js\MyJS.js" />
+    <None Include="wwwroot\UserImages\DefaultImage.jpg" />
     <None Include="wwwroot\vendors\select2\select2.min.js" />
   </ItemGroup>
 
@@ -45,6 +47,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.30.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Error\" />
   </ItemGroup>
 
 </Project>

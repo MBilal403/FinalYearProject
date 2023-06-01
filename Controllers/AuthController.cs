@@ -35,58 +35,60 @@ namespace FYP.Controllers
             } 
             else
             {
-                using (HttpClient httpClient = new HttpClient())
-                {
-                    // Send the request and post the response
-                    var loginData = new { Email = email, Password = password };
-                    var jsonRequest = JsonConvert.SerializeObject(loginData);
-                    var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = await httpClient.PostAsync(BaseUrl+ "/auth/Login", content);
-
-
-                    // Check if the response was successful
-                    if (response.IsSuccessStatusCode)
+                try {
+                    using (HttpClient httpClient = new HttpClient())
                     {
-                        // Read the token from the response headers
-                        string jsonResponse = await response.Content.ReadAsStringAsync();
-                        var MyResponse = JsonConvert.DeserializeAnonymousType(jsonResponse, new
+                        // Send the request and post the response
+                        var loginData = new { Email = email, Password = password };
+                        var jsonRequest = JsonConvert.SerializeObject(loginData);
+                        var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+
+                        HttpResponseMessage response = await httpClient.PostAsync(BaseUrl+ "/auth/Login", content);
+
+
+                        // Check if the response was successful
+                        if (response.IsSuccessStatusCode)
                         {
-                            Token = null as string,
-                            Response = new
+                            // Read the token from the response headers
+                            string jsonResponse = await response.Content.ReadAsStringAsync();
+                            var MyResponse = JsonConvert.DeserializeAnonymousType(jsonResponse, new
                             {
-                                userId = (int?)null,
-                                email = null as string,
-                                userRole = null as string,
-                                fullname = null as string
-
-                            },
-                            Message = null as string,
-                            isSuccess = (bool?)null
-                        });
-
-                      
-
-                        // Create a ClaimsIdentity and set it as the User's identity
-                        var claimsIdentity = new ClaimsIdentity(new Claim[]
-                         {
-                            new Claim(ClaimTypes.Name, MyResponse!.Response.userId.ToString()!), // Add any additional claims as needed
-                            new Claim(ClaimTypes.Email, MyResponse.Response.email!), // Add any additional claims as needed
-                            new Claim(ClaimTypes.Role, MyResponse.Response.userRole!) // Add any additional claims as needed
-                         },CookieAuthenticationDefaults.AuthenticationScheme
-                         );
+                                Token = null as string,
+                                Response = new
+                                {
+                                    userId = (int?)null,
+                                    email = null as string,
+                                    userRole = null as string,
+                                    fullname = null as string,
+                                    userImage = (byte[])null!,
+                                },
+                                Message = null as string,
+                                isSuccess = (bool?)null
+                            });
+                            // Create a ClaimsIdentity and set it as the User's identity
+                            var claimsIdentity = new ClaimsIdentity(new Claim[]
+                             {
+                                new Claim(ClaimTypes.Name, MyResponse!.Response.userId.ToString()!), // Add any additional claims as needed
+                                new Claim(ClaimTypes.Email, MyResponse.Response.email!), // Add any additional claims as needed
+                                new Claim(ClaimTypes.Role, MyResponse.Response.userRole!) // Add any additional claims as needed
+                             },CookieAuthenticationDefaults.AuthenticationScheme
+                             );
                          
-                           var principal = new ClaimsPrincipal(claimsIdentity);
-                        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal).ConfigureAwait(false);
+                               var principal = new ClaimsPrincipal(claimsIdentity);
+                            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal).ConfigureAwait(false);
                       
-                        HttpContext.Session.SetString("UserId", MyResponse!.Response.userId.ToString()!);
-                        HttpContext.Session.SetString("FullName", MyResponse.Response.fullname!);
-                        HttpContext.Session.SetString("UserRole", MyResponse!.Response.userRole!);
-                        HttpContext.Session.SetString("Token", MyResponse.Token!);
-
-                     
-                        // string token = tokenResponse.Token;
+                            HttpContext.Session.SetString("UserId", MyResponse!.Response.userId.ToString()!);
+                            HttpContext.Session.SetString("FullName", MyResponse.Response.fullname!);
+                            HttpContext.Session.SetString("UserRole", MyResponse!.Response.userRole!);
+                            HttpContext.Session.SetString("Token", MyResponse.Token!);
+                          //  HttpContext.Session.Set("Image", MyResponse.Response.userImage);
+                            // string token = tokenResponse.Token;
+                        }
                     }
+                }
+                catch (Exception e)
+                {
+                    return View("Error");   
                 }
                 return RedirectToAction("index", "Dashboard");
             }

@@ -1,5 +1,5 @@
 ﻿@{
-    string imagePath = ViewData["ImagePath"] as string;
+   // var imagePath = ViewData["ImagePath"] as byte[];
 }
 @using Microsoft.AspNetCore.Identity
 <!DOCTYPE html>
@@ -105,8 +105,8 @@
                     </li>
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                           @* <img src="/images/faces/face28.jpg" alt="profile" />*@
-                            <img src="@imagePath" alt="profile" />
+                           <img src="/images/faces/face28.jpg" alt="profile" />
+                         @*   <img src="data:image;base64,@Convert.ToBase64String(imagePath)" alt="profile" />*@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                             <a class="dropdown-item" asp-action="Logout" asp-controller="Auth">

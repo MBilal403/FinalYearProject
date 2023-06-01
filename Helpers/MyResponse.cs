@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography;
 
-namespace EduSpaceAPI.Helpers
+namespace FYP.Helpers
 {
     public class MyResponse<T>
     {
