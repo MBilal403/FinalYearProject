@@ -1,0 +1,83 @@
+﻿@model DepartmentModel
+@using Microsoft.AspNetCore.Identity
+@{
+    ViewData["Title"] = "Departments";
+}
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Assign Charge</h4>
+            <p class="card-description">
+                Slect the member
+            </p>
+            <form class="forms-sample" asp-controller="Department" asp-route-id="@Model.DepartId" asp-action="Setting" method="post">
+             
+                <div class="form-group">
+                    <label for="exampleSelectGender">Incharge</label>
+                    <select class="form-control" id="userSelect" name="incharge">
+                        <option value="None">None</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleSelectGender">Administrator</label>
+                    <select class="form-control" id="userSelect2" name="admin">
+                        <option value="None">None</option>
+                    </select>
+                </div>
+             
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                <a class="btn btn-info btn-sm" asp-action="ViewDepartments" asp-controller="Department">Back</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+   
+
+    $(document).ready(function () {
+        // Make an AJAX request to retrieve user data
+        $.ajax({
+            url: 'https://localhost:7031/auth/TeacherUsers', // Replace with the appropriate API endpoint URL
+            type: 'GET',
+         
+            success: function (users) {
+                // Extract an array of options using map() function
+                var options = users.map(function (user) {
+                    return $(`<option value="${user.fullName}">${user.fullName}</option>`);
+                });
+
+                // Append the options to the select element
+                $('#userSelect').append(options);
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log('Error retrieving user data: ' + errorThrown);
+            }
+        });
+        $.ajax({
+            url: 'https://localhost:7031/auth/AdminUsers', // Replace with the appropriate API endpoint URL
+            type: 'GET',
+            success: function (users) {
+                // Extract an array of options using map() function
+                var options = users.map(function (user) {
+                    return $(`<option value="${user.fullName}">${user.fullName}</option>`);
+                });
+
+                // Append the options to the select element
+                $('#userSelect2').append(options);
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log('Error retrieving user data: ' + errorThrown);
+            }
+        });
+    });
+
+</script>
+
+
+
+
+
+
+
+

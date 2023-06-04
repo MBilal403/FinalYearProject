@@ -1,0 +1,200 @@
+﻿@model IEnumerable<DepartmentModel>
+@using Microsoft.AspNetCore.Identity
+@{
+    ViewData["Title"] = "Departments";
+}
+<div class="row" style="padding-top: 2%;">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Non Active Departments</h2>
+        
+             
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Department Name</th>
+                                <th>Incharge Name</th>
+                                <th>Administrator Name</th>
+                                <th>Created</th>
+                                @if (User.IsInRole("SuperAdmin"))
+                                {
+                                    <th>Status</th>
+
+                                    <th>Actions</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var department in Model)
+                            {
+                                <tr>
+                                    <td>@department.DepartName</td>
+                                    @if (department.InchargeName == null)
+                                    {
+                                        <td>Pending..</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@department.InchargeName</td>
+                                    }
+                                    @if (department.AdminName == null)
+                                    {
+                                        <td>Pending..</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@department.AdminName</td>
+                                    }
+
+                                    <td>@department.CreatedAt.ToString("dd-MM-yyyy")</td>
+                                    @if (User.IsInRole("SuperAdmin"))
+                                    {
+                                        <td>
+                                            <!-- Default switch -->
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitches-@department.DepartId" @if (department.Status)
+                                                {
+                                                    <text>checked</text>
+                                                }>
+                                                <label class="custom-control-label" for="customSwitches-@department.DepartId"></label>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <a class="btn btn-info btn-sm" asp-action="EditDepartment" asp-route-id="@department.DepartId" asp-controller="Department">Edit</a> |
+                                            <a class="btn btn-danger btn-sm setting-link" asp-route-id="@department.DepartId" data-user-id="@department.DepartId">Settings</a>
+                                        </td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const switches = document.querySelectorAll('.custom-control-input');
+        const settingLinks = document.querySelectorAll('.setting-link');
+        const BaseURL = "https://localhost:7031";
+        switches.forEach((switchElement, index) => {
+            switchElement.addEventListener('change', function () {
+                const userId = this.id.split('-')[1];
+                const isEnabled = this.checked;
+
+                const settingLink = settingLinks[index];
+                var payload = {
+                    status: isEnabled
+                };
+                // Enable or disable the setting link based on switch state
+                if (isEnabled) {
+                    console.log('User', userId, 'enabled');
+
+                    $.ajax({
+                        url: BaseURL + "/department/DepartmentStatus/" + userId,
+                        type: "PUT",
+                        contentType: "application/json",
+                        data: JSON.stringify(payload),
+                        success: function () {
+                            console.log("Department status updated successfully");
+                            settingLink.removeAttribute('disabled');
+                            settingLink.classList.remove('disabled');
+                            location.reload();
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("An error occurred: " + error);
+                            // Handle error response
+                        }
+                    });
+
+
+
+
+                }
+                else {
+                    console.log('User', userId, 'disabled');
+
+                    $.ajax({
+                        url: "https://localhost:7031/department/DepartmentStatus/" + userId,
+                        type: "PUT",
+                        contentType: "application/json",
+                        data: JSON.stringify(payload),
+                        success: function () {
+                            console.log("Department status updated successfully");
+                            settingLink.removeAttribute('disabled');
+                            settingLink.classList.remove('disabled');
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("An error occurred: " + error);
+                            settingLink.setAttribute('disabled', 'disabled');
+                            settingLink.classList.add('disabled');
+                            location.reload();
+                        }
+                    });
+                }
+            });
+        });
+
+        settingLinks.forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                const userId = this.getAttribute('data-user-id');
+
+                // Perform actions based on the user ID
+                console.log('Setting link clicked for User ID:', userId);
+            });
+        });
+    });
+    // Assume you have a button with the ID "update-status-button" and an input field with the ID "status-input"
+
+    @*    $(document).ready(function () {
+        $("#update-status-button").click(function () {
+        var departmentId = 1; // Replace with the actual department ID
+        var newStatus = $("#status-input").val();
+
+        // Create the JSON payload
+        var payload = {
+        status: newStatus
+        };
+
+        // Send the PUT request using jQuery's AJAX function
+        $.ajax({
+        url: "/department/DepartmentStatus/" + departmentId,
+        type: "PUT",
+        contentType: "application/json",
+        data: JSON.stringify(payload),
+        success: function () {
+        console.log("Department status updated successfully");
+        // Handle success response
+        },
+        error: function (xhr, status, error) {
+        console.log("An error occurred: " + error);
+        // Handle error response
+        }
+        });
+        });
+        });*@
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+

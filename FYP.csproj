@@ -30,6 +30,7 @@
     <None Include="wwwroot\js\MyJS.js" />
     <None Include="wwwroot\UserImages\DefaultImage.jpg" />
     <None Include="wwwroot\vendors\select2\select2.min.js" />
+    <None Include="wwwroot\vendors\typeahead.js\typeahead.bundle.min.js" />
   </ItemGroup>
 
   <ItemGroup>

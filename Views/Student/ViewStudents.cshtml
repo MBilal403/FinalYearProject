@@ -1,0 +1,58 @@
+﻿@model IEnumerable<StudentModel>
+@{
+    ViewData["Title"] = "View Students";
+}
+
+<div class="col-lg-12 grid-margin stretch-card" style="padding-top: 2%">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Administrator Detail</h4>
+            <h2 class="card-title">Department Details</h2>
+            <a class=" btn btn-primary btn-md " asp-action="CreateStudent" asp-controller="Student">
+                New Admin
+            </a>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                Profile Picture
+                            </th>
+                            <th>
+                                First name
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                                Created date
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var user in Model){
+                        <tr>
+                            <td class="py-1">
+                                    <img src=@user.ImagePath alt="image">
+                            </td>
+                            <td>
+                                    @user.FullName
+                            </td>
+                            <td>
+                                    @user.Email
+                            </td>
+                            <td>
+                                    @user.CreatedAt.ToString("dd-MM-yyyy")
+                            </td>
+                            <td>
+                                <a class="btn btn-info btn-sm" asp-action="EditDepartment" asp-controller="Department">Edit</a> |
+                                <a class="btn btn-danger btn-sm" asp-action="DeleteDepartment" asp-controller="Department">Delete</a>
+                            </td>
+                        </tr>
+                        }                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,12 +5,24 @@
       "PackagePath": "staticwebassets\\FYP.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\UserImages\\0817f72a0f.jpg",
+      "PackagePath": "staticwebassets\\UserImages\\0817f72a0f.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\UserImages\\087e2e3baa.jpg",
+      "PackagePath": "staticwebassets\\UserImages\\087e2e3baa.jpg"
+    },
+    {
       "Id": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\UserImages\\0c8442d43c.JPG",
       "PackagePath": "staticwebassets\\UserImages\\0c8442d43c.JPG"
     },
     {
       "Id": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\UserImages\\1040789b-b815-4ea6-81b6-ce555fb6be1f.JPG",
       "PackagePath": "staticwebassets\\UserImages\\1040789b-b815-4ea6-81b6-ce555fb6be1f.JPG"
+    },
+    {
+      "Id": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\UserImages\\182c624253.jpg",
+      "PackagePath": "staticwebassets\\UserImages\\182c624253.jpg"
     },
     {
       "Id": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\UserImages\\2ce8ce58-fee2-424a-97ce-d6d0dc53a855.jpg",
@@ -65,8 +77,28 @@
       "PackagePath": "staticwebassets\\UserImages\\dc4342a8-2807-44a2-8a5f-34739b52359e.jpg"
     },
     {
+      "Id": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\UserImages\\e22eb85d1d.jpg",
+      "PackagePath": "staticwebassets\\UserImages\\e22eb85d1d.jpg"
+    },
+    {
       "Id": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\UserImages\\f0bba59cd8.JPG",
       "PackagePath": "staticwebassets\\UserImages\\f0bba59cd8.JPG"
+    },
+    {
+      "Id": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\UserResume\\135780bf06.pdf",
+      "PackagePath": "staticwebassets\\UserResume\\135780bf06.pdf"
+    },
+    {
+      "Id": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\UserResume\\1b3ca53fc2.pdf",
+      "PackagePath": "staticwebassets\\UserResume\\1b3ca53fc2.pdf"
+    },
+    {
+      "Id": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\UserResume\\79410a1d26.pdf",
+      "PackagePath": "staticwebassets\\UserResume\\79410a1d26.pdf"
+    },
+    {
+      "Id": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\UserResume\\f1191c1313.pdf",
+      "PackagePath": "staticwebassets\\UserResume\\f1191c1313.pdf"
     },
     {
       "Id": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\css\\maps\\vertical-layout-light\\style.css.map",
@@ -1587,6 +1619,10 @@
     {
       "Id": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\vendors\\ti-icons\\fonts\\themify.woff",
       "PackagePath": "staticwebassets\\vendors\\ti-icons\\fonts\\themify.woff"
+    },
+    {
+      "Id": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\wwwroot\\vendors\\typeahead.js\\typeahead.bundle.min.js",
+      "PackagePath": "staticwebassets\\vendors\\typeahead.js\\typeahead.bundle.min.js"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.FYP.Microsoft.AspNetCore.StaticWebAssets.props",

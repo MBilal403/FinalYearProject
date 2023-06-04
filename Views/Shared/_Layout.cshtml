@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="/vendors/feather/feather.css">
     <link rel="stylesheet" href="/vendors/ti-icons/css/themify-icons.css">
     <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
-    
+    <link rel="stylesheet" href="/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="/vendors/datatables.net-bs4/dataTables.bootstrap4.css" />
@@ -156,6 +157,7 @@
                                     <ul class="nav flex-column sub-menu">
                                         <li class="nav-item"> <a class="nav-link" asp-action="ViewAdmins" asp-controller="Admin"> Administrators </a></li>
                                         <li class="nav-item"> <a class="nav-link" asp-action="ViewTeacher" asp-controller="Teacher"> Teachers </a></li>
+                                        <li class="nav-item"> <a class="nav-link" asp-action="ViewStudents" asp-controller="Student"> Students </a></li>
 
                                     </ul>
                                 </div>
@@ -164,6 +166,12 @@
                                 <a class="nav-link" asp-action="ViewDepartments" asp-controller="Department">
                                     <i class="icon-grid-2 menu-icon"></i>
                                     <span class="menu-title">Departments</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="ViewProgarms" asp-controller="Program">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">Courses</span>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -199,15 +207,7 @@
                                     <span class="menu-title">Announcements</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-action="ViewDepartments" asp-controller="Teacher">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Teachers</span>
-                                </a>
-                            </li>
-
-
-
+                          
                             <li class="nav-item">
                                 <a class="nav-link" asp-action="ViewDepartments" asp-controller="Department">
                                     <i class="icon-paper menu-icon"></i>
@@ -228,6 +228,12 @@
                                 <a class="nav-link" asp-action="ViewTeachers" asp-controller="Teacher">
                                     <i class="icon-grid-2 menu-icon"></i>
                                     <span class="menu-title">Teachers</span>
+                                </a>
+                            </li>
+                               <li class="nav-item">
+                                <a class="nav-link" asp-action="ViewStudents" asp-controller="Student">
+                                    <i class="icon-grid-2 menu-icon"></i>
+                                    <span class="menu-title">Students</span>
                                 </a>
                             </li>
 
@@ -427,28 +433,36 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 
-    <script src="/vendors/js/vendor.bundle.base.js"></script>
+    <script src="~/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="/vendors/chart.js/Chart.min.js"></script>
-    <script src="/vendors/datatables.net/jquery.dataTables.js"></script>
-    <script src="/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-    <script src="/js/dataTables.select.min.js"></script>
-                 
+    <script src="~/vendors/chart.js/Chart.min.js"></script>
+    <script src="~/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="~/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="~/js/dataTables.select.min.js"></script>
+
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="/js/off-canvas.js"></script>
-    <script src="/js/hoverable-collapse.js"></script>
-    <script src="/js/template.js"></script>
-    <script src="/js/settings.js"></script>
-    <script src="/js/todolist.js"></script>
+    <script src="~/js/off-canvas.js"></script>
+    <script src="~/js/hoverable-collapse.js"></script>
+    <script src="~/js/template.js"></script>
+    <script src="~/js/settings.js"></script>
+    <script src="~/js/todolist.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page-->
-    <script src="/js/dashboard.js"></script>
-    <script src="/js/Chart.roundedBarCharts.js"></script>
-      <script src="/js/file-upload.js"></script>
-  <script src="/js/typeahead.js"></script>
-  <script src="/js/select2.js"></script>
+    <script src="~/js/dashboard.js"></script>
+    <script src="~/js/Chart.roundedBarCharts.js"></script>
+    <script src="~/js/file-upload.js"></script>
+    <script src="~/js/typeahead.js"></script>
+    <script src="~/js/select2.js"></script>
+
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+
+    <script src="~/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <script src="~/vendors/select2/select2.min.js"></script>
+
+
 
 </body>
 </html>

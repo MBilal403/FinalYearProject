@@ -17,6 +17,7 @@
                         </div>
                         <input type="text" class="form-control" id="navbar-search-input" name="searchQuery" placeholder="Search now" aria-label="search" aria-describedby="search">
                         <button type="submit" class="btn btn-primary">Search</button>
+                        
                     </div>
                 </form>
                 @if (User.IsInRole("SuperAdmin")) {
@@ -29,6 +30,8 @@
 
                         <button type="submit" class="btn btn-primary mb-2">Create</button>
                     </form>
+                    <a class="btn btn-info btn-sm" asp-action="ViewActiveDepartment" asp-controller="Department">Active</a>
+                    <a class="btn btn-info btn-sm" asp-action="ViewNonActiveDepartment" asp-controller="Department">non Active</a>
                 }
                 <div class="table-responsive">
                     <table class="table">
@@ -79,13 +82,11 @@
                                             }>
                                             <label class="custom-control-label" for="customSwitches-@department.DepartId"></label>
                                         </div>
-
                              </td>
                                  
-
                                 <td>
-                                    <a class="btn btn-info btn-sm" asp-action="EditDepartment" asp-controller="Department">Edit</a> |
-                                        <a class="btn btn-danger btn-sm setting-link"  data-user-id="@department.DepartId">Settings</a>
+                                   <a class="btn btn-info btn-sm" asp-action="EditDepartment" asp-route-id="@department.DepartId" asp-controller="Department">Edit</a> |
+                                            <a class="btn btn-danger btn-sm setting-link" asp-action="Setting" asp-controller="Department" asp-route-id="@department.DepartId" data-user-id="@department.DepartId">Settings</a>
                                 </td>
                                     }
                             </tr>
@@ -99,6 +100,8 @@
 </div>
 
 <script>
+
+   
     document.addEventListener('DOMContentLoaded', function () {
         const switches = document.querySelectorAll('.custom-control-input');
         const settingLinks = document.querySelectorAll('.setting-link');
@@ -160,16 +163,6 @@
             });
         });
 
-        settingLinks.forEach(link => {
-            link.addEventListener('click', function (event) {
-                event.preventDefault();
-                const userId = this.getAttribute('data-user-id');
-
-                // Perform actions based on the user ID
-                console.log('Setting link clicked for User ID:', userId);
-            });
-        });
-    });
     // Assume you have a button with the ID "update-status-button" and an input field with the ID "status-input"
 
 @*    $(document).ready(function () {
