@@ -4,10 +4,14 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using FYP.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 /*var ConnectionString = "Data Source=DESKTOP-TKFMBUI;Initial Catalog=fyp;Integrated Security=True";
 */// Add services to the container.
+builder.Services.AddMvc();
+builder.Services.AddTransient<FileManager>();
+
 builder.Services.AddDistributedMemoryCache(); // Adds an in-memory cache for storing session data
 
 builder.Services.AddSession(options =>

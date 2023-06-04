@@ -1,0 +1,116 @@
+﻿@{
+    ViewData["FullTitle"] = "New Admin";
+    var mymessage = ViewBag.MyMessage;
+}
+
+<div class="col-12 grid-margin" style="padding-top: 5%">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Create New Teacher</h4>
+            <form class="form-sample" asp-action="CreateTeacher" asp-controller="Teacher" method="post" enctype="multipart/form-data">
+                <p class="card-description">
+                    Personal info
+                </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Full Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="fullname" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Email Address</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="emailaddress" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Gender</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" name="gender">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Date of Birth</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="date" placeholder="dd/mm/yyyy" name="dateofbirth" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Image upload</label>
+                    <input type="file" name="userimage" class="file-upload-default">
+                    <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info" name="userimage" placeholder="Upload Image">
+                        <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Resume upload</label>
+                    <input type="file" name="resume" class="file-upload-default">
+                    <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info" name="resume" placeholder="Upload Resume">
+                        <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Address</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="exampleTextarea1" name="address" rows="4"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Phone Number</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" name="contactnumber" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">City</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="city" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Qualification</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="qualification" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

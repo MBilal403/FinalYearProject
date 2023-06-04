@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<DepartmentModel>
+@using Microsoft.AspNetCore.Identity
 @{
     ViewData["Title"] = "Departments";
 }
@@ -7,26 +8,42 @@
         <div class="card">
             <div class="card-body">
                 <h2 class="card-title">All Departments</h2>
-                  <p class="card-description">
-                   Enter the Name of the department 
-                  </p>
-                <form class="form-inline" asp-controller="Department" asp-action="ViewDepartments" method="post">
-                    <label class="sr-only" for="inlineFormInputName2">Name</label>
-                    <input type="text" name="departName" class="form-control mb-2 mr-sm-2" id="exampleInputName1" placeholder="Information Technology">
-                  
-                    <button type="submit" class="btn btn-primary mb-2">Create</button>
-                  </form>
+                <form asp-controller="Department" asp-action="Search" method="get" >
+                    <div class="input-group">
+                        <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                            <span class="input-group-text" id="search">
+                                <i class="icon-search"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" id="navbar-search-input" name="searchQuery" placeholder="Search now" aria-label="search" aria-describedby="search">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </form>
+                @if (User.IsInRole("SuperAdmin")) {
+                    <p class="card-description">
+                        Enter the Name of the department 
+                    </p>
+                    <form class="form-inline" asp-controller="Department" asp-action="ViewDepartments" method="post">
+                        <label class="sr-only" for="inlineFormInputName2">Name</label>
+                        <input type="text" name="departName" class="form-control mb-2 mr-sm-2" id="exampleInputName1" placeholder="Information Technology">
+
+                        <button type="submit" class="btn btn-primary mb-2">Create</button>
+                    </form>
+                }
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>Department Name</th>
-
                                 <th>Incharge Name</th>
                                 <th>Administrator Name</th>
                                 <th>Created</th>
+                                @if (User.IsInRole("SuperAdmin"))
+                                {
                                 <th>Status</th>
+                            
                                 <th>Actions</th>
+                                }
                             </tr>
                         </thead>
                         <tbody>
@@ -34,22 +51,43 @@
                               {
                             <tr>
                                 <td>@department.DepartName</td>
-                                <td>@department.InchargeName</td>
-                                <td>@department.AdminName</td>
-                                    <td>@department.CreatedAt.ToString("yyyy-MM-dd")</td>
+                                    @if (department.InchargeName == null)
+                                    {
+                                        <td>Pending..</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@department.InchargeName</td>
+                                    }
+                                    @if( department.AdminName == null){
+                                        <td>Pending..</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@department.AdminName</td>
+                                    }
+                               
+                                    <td>@department.CreatedAt.ToString("dd-MM-yyyy")</td>
+                                    @if (User.IsInRole("SuperAdmin"))
+                                    {
                                 <td>
                                     <!-- Default switch -->
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitches">
-                                        <label class="custom-control-label" for="customSwitches"></label>
-                                    </div>
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="customSwitches-@department.DepartId" @if (department.Status)
+                                            {
+                                                <text>checked</text>
+                                            }>
+                                            <label class="custom-control-label" for="customSwitches-@department.DepartId"></label>
+                                        </div>
 
                              </td>
+                                 
+
                                 <td>
                                     <a class="btn btn-info btn-sm" asp-action="EditDepartment" asp-controller="Department">Edit</a> |
-                                    <a class="btn btn-danger btn-sm" asp-action="DeleteDepartment" asp-controller="Department">Delete</a>
-                                    <a class="btn btn-info btn-sm" asp-action="DeleteDepartment" asp-controller="Department">Settings</a>
+                                        <a class="btn btn-danger btn-sm setting-link"  data-user-id="@department.DepartId">Settings</a>
                                 </td>
+                                    }
                             </tr>
                            }
                         </tbody>
@@ -60,26 +98,123 @@
     </div>
 </div>
 
-
 <script>
-        $(document).ready(function () {
-            alert("Bilal ");
+    document.addEventListener('DOMContentLoaded', function () {
+        const switches = document.querySelectorAll('.custom-control-input');
+        const settingLinks = document.querySelectorAll('.setting-link');
+        const BaseURL = "https://localhost:7031";
+        switches.forEach((switchElement, index) => {
+            switchElement.addEventListener('change', function () {
+                const userId = this.id.split('-')[1];
+                const isEnabled = this.checked;
+
+                const settingLink = settingLinks[index];
+                var payload = {
+                    status: isEnabled
+                };
+                // Enable or disable the setting link based on switch state
+                if (isEnabled) {
+                    console.log('User', userId, 'enabled');
+                   
+                    $.ajax({
+                        url: BaseURL + "/department/DepartmentStatus/" + userId,
+                        type: "PUT",
+                        contentType: "application/json",
+                        data: JSON.stringify(payload),
+                        success: function () {
+                            console.log("Department status updated successfully");
+                            settingLink.removeAttribute('disabled');
+                            settingLink.classList.remove('disabled');
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("An error occurred: " + error);
+                            // Handle error response
+                        }
+                    });
+
+
+
+
+                } 
+                else 
+                {
+                    console.log('User', userId, 'disabled');
+                 
+                    $.ajax({
+                        url: "https://localhost:7031/department/DepartmentStatus/" + userId,
+                        type: "PUT",
+                        contentType: "application/json",
+                        data: JSON.stringify(payload),
+                        success: function () {
+                            console.log("Department status updated successfully");
+                            settingLink.removeAttribute('disabled');
+                            settingLink.classList.remove('disabled');
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("An error occurred: " + error);
+                            settingLink.setAttribute('disabled', 'disabled');
+                            settingLink.classList.add('disabled');
+                        }
+                    });
+                }
+            });
         });
 
+        settingLinks.forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                const userId = this.getAttribute('data-user-id');
 
-        var switchElement = document.getElementById('customSwitches');
-        switchElement.addEventListener('change', function () {
-        var isChecked = switchElement.checked;
-
-        // Additional logic: Perform actions based on the active state
-        if (isChecked) {
-            // Perform actions when active
-            console.log('Switch is active');
-        } else {
-            // Perform actions when inactive
-            console.log('Switch is inactive');
-        }
+                // Perform actions based on the user ID
+                console.log('Setting link clicked for User ID:', userId);
+            });
+        });
     });
+    // Assume you have a button with the ID "update-status-button" and an input field with the ID "status-input"
+
+@*    $(document).ready(function () {
+        $("#update-status-button").click(function () {
+            var departmentId = 1; // Replace with the actual department ID
+            var newStatus = $("#status-input").val();
+
+            // Create the JSON payload
+            var payload = {
+                status: newStatus
+            };
+
+            // Send the PUT request using jQuery's AJAX function
+            $.ajax({
+                url: "/department/DepartmentStatus/" + departmentId,
+                type: "PUT",
+                contentType: "application/json",
+                data: JSON.stringify(payload),
+                success: function () {
+                    console.log("Department status updated successfully");
+                    // Handle success response
+                },
+                error: function (xhr, status, error) {
+                    console.log("An error occurred: " + error);
+                    // Handle error response
+                }
+            });
+        });
+    });*@
+
+   
+
+
+
+
+
+
 </script>
+
+
+
+
+
+
+
+
 
 

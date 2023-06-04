@@ -17,6 +17,10 @@
         public string? ResumePath { get; set; }
         public string? City { get; set; }
         public DateTime CreatedAt { get; set; }
+        public string? Gender { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string? Qualification { get; set; }
+
 
     }
 }

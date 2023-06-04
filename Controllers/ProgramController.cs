@@ -6,7 +6,7 @@ namespace FYP.Controllers
     public class ProgramController : Controller
     {
         // GET: ProgramController
-        public ActionResult Index()
+        public ActionResult ViewProgram()
         {
 
             return View();

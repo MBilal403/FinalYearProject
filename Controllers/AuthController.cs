@@ -1,4 +1,5 @@
-﻿using FYP.Models;
+﻿using FYP.Helpers;
+using FYP.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
@@ -14,7 +15,7 @@ namespace FYP.Controllers
    
     public class AuthController : Controller
     {
-        private string BaseUrl = "https://localhost:7031";
+        
         // GET: AuthController
         public ActionResult Index()
         {
@@ -38,13 +39,13 @@ namespace FYP.Controllers
                 try {
                     using (HttpClient httpClient = new HttpClient())
                     {
+                        
                         // Send the request and post the response
                         var loginData = new { Email = email, Password = password };
                         var jsonRequest = JsonConvert.SerializeObject(loginData);
                         var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
 
-                        HttpResponseMessage response = await httpClient.PostAsync(BaseUrl+ "/auth/Login", content);
-
+                        HttpResponseMessage response = await httpClient.PostAsync(BaseURL.baseURl + "/auth/Login", content);
 
                         // Check if the response was successful
                         if (response.IsSuccessStatusCode)

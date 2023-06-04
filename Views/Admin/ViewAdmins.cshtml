@@ -1,6 +1,6 @@
-﻿
+﻿@model IEnumerable<UserModel>
 @{
-    ViewData["Title"] = "ViewAdmins";
+    ViewData["Title"] = "View Admins";
 }
 
 <div class="col-lg-12 grid-margin stretch-card" style="padding-top: 2%">
@@ -22,7 +22,7 @@
                                 First name
                             </th>
                             <th>
-                                Department Name
+                                Email
                             </th>
                             <th>
                                 Created date
@@ -30,42 +30,26 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach(var user in Model){
                         <tr>
                             <td class="py-1">
-                                <img src="../../images/faces/face1.jpg" alt="image">
+                                    <img src=@user.ImagePath alt="image">
                             </td>
                             <td>
-                                Rana Qaiser
+                                    @user.FullName
                             </td>
                             <td>
-                                Information Technology
+                                    @user.Email
                             </td>
                             <td>
-                                May 15, 2015
+                                    @user.CreatedAt.ToString("dd-MM-yyyy")
                             </td>
                             <td>
                                 <a class="btn btn-info btn-sm" asp-action="EditDepartment" asp-controller="Department">Edit</a> |
                                 <a class="btn btn-danger btn-sm" asp-action="DeleteDepartment" asp-controller="Department">Delete</a>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-1">
-                                <img src="../../images/faces/face1.jpg" alt="image">
-                            </td>
-                            <td>
-                                Rana Qaiser
-                            </td>
-                            <td>
-                                Information Technology
-                            </td>
-                            <td>
-                                May 15, 2015
-                            </td>
-                            <td>
-                                <a class="btn btn-info btn-sm" asp-action="EditDepartment" asp-controller="Department">Edit</a> |
-                                <a class="btn btn-danger btn-sm" asp-action="DeleteDepartment" asp-controller="Department">Delete</a>
-                            </td>
-                        </tr>
+                        }                       
                     </tbody>
                 </table>
             </div>

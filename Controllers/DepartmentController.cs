@@ -2,7 +2,9 @@
 using FYP.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 
@@ -10,7 +12,12 @@ namespace FYP.Controllers
 {
     public class DepartmentController : Controller
     {
-        private string BaseUrl = "https://localhost:7031";
+        private ILogger<DepartmentController> _logger;
+        public DepartmentController(ILogger<DepartmentController> logger)
+        {
+            _logger = logger;
+        }
+        
         // GET: DeaprtmentController
         public async Task<ActionResult> ViewDepartments()
         {
@@ -19,7 +26,7 @@ namespace FYP.Controllers
                 // Set the authorization token in the request headers
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token")!);
 
-                string apiURl = BaseUrl + "/department/departments";
+                string apiURl = BaseURL.baseURl + "/department/departments";
                 // Send the request and get the response
                 HttpResponseMessage response = await httpClient.GetAsync(apiURl);
                 if (response.IsSuccessStatusCode)
@@ -27,12 +34,14 @@ namespace FYP.Controllers
                     // Read the response content
                     string jsonResponse = await response.Content.ReadAsStringAsync();
                     List<DepartmentModel> departments = JsonConvert.DeserializeObject<List<DepartmentModel>>(jsonResponse)!;
-                    
+                  /* foreach(var model in departments)
+                    {
+                    _logger.LogInformation(model.DepartId.ToString());
+                    }*/
                     return View(departments);
 
                 }
             }
-
                 return View();
         }
 
@@ -62,7 +71,7 @@ namespace FYP.Controllers
                     var jsonRequest = JsonConvert.SerializeObject(obj);
                     var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
 
-                    HttpResponseMessage response = await httpClient.PostAsync(BaseUrl + "/department/Create", content);
+                    HttpResponseMessage response = await httpClient.PostAsync(BaseURL.baseURl + "/department/Create", content);
 
 
                     // Check if the response was successful
@@ -73,7 +82,7 @@ namespace FYP.Controllers
                             // Set the authorization token in the request headers
                             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token")!);
 
-                            string apiURl = BaseUrl + "/department/departments";
+                            string apiURl = BaseURL.baseURl + "/department/departments";
                             // Send the request and get the response
                             HttpResponseMessage response1 = await httpClient1.GetAsync(apiURl);
                             if (response.IsSuccessStatusCode)
@@ -81,7 +90,7 @@ namespace FYP.Controllers
                                 // Read the response content
                                 string jsonResponse = await response1.Content.ReadAsStringAsync();
                                 List<DepartmentModel> departments = JsonConvert.DeserializeObject<List<DepartmentModel>>(jsonResponse)!;
-
+                                
                                 return View(departments);
 
                             }
@@ -129,10 +138,28 @@ namespace FYP.Controllers
             }
         }
 
-        // GET: DeaprtmentController/Edit/5
-        public ActionResult EditDepartment(int id)
+        // GET: DeaprtmentController/Search/5
+        public async Task<ActionResult> Search(string searchQuery)
         {
-            return View();
+            using (HttpClient httpClient = new HttpClient())
+            {
+                // Set the authorization token in the request headers
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token")!);
+
+                string apiURl = BaseURL.baseURl + "/department/DepartmentsWithName?departName=" + searchQuery;
+                // Send the request and get the response
+                HttpResponseMessage response = await httpClient.GetAsync(apiURl);
+                if (response.IsSuccessStatusCode)
+                {
+                    // Read the response content
+                    string jsonResponse = await response.Content.ReadAsStringAsync();
+                    List<DepartmentModel> departments = JsonConvert.DeserializeObject<List<DepartmentModel>>(jsonResponse)!;
+
+                    return View(departments);
+
+                }
+                return View();
+            }
         }
 
         // POST: DeaprtmentController/Edit/5
