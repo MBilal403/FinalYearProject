@@ -30,9 +30,9 @@
 
                         <button type="submit" class="btn btn-primary mb-2">Create</button>
                     </form>
-                    <a class="btn btn-info btn-sm" asp-action="ViewActiveDepartment" asp-controller="Department">Active</a>
+               @*     <a class="btn btn-info btn-sm" asp-action="ViewActiveDepartment" asp-controller="Department">Active</a>
                     <a class="btn btn-info btn-sm" asp-action="ViewNonActiveDepartment" asp-controller="Department">non Active</a>
-                }
+               *@ }
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -125,7 +125,9 @@
                             console.log("Department status updated successfully");
                             settingLink.removeAttribute('disabled');
                             settingLink.classList.remove('disabled');
-                        
+                            // Reload the current page
+                            location.reload();
+
                         },
                         error: function (xhr, status, error) {
                             console.log("An error occurred: " + error);
@@ -145,6 +147,9 @@
                             console.log("Department status updated successfully");
                             settingLink.removeAttribute('disabled');
                             settingLink.classList.remove('disabled');
+                            // Reload the current page
+                            location.reload();
+
                         },
                         error: function (xhr, status, error) {
                             console.log("An error occurred: " + error);
