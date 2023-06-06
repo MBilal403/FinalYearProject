@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\FYP.csproj": {}
+    "D:\\new\\FinalYearProject\\FYP.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\FYP.csproj": {
+    "D:\\new\\FinalYearProject\\FYP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\FYP.csproj",
+        "projectUniqueName": "D:\\new\\FinalYearProject\\FYP.csproj",
         "projectName": "FYP",
-        "projectPath": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\FYP.csproj",
+        "projectPath": "D:\\new\\FinalYearProject\\FYP.csproj",
         "packagesPath": "C:\\Users\\Muhammad Subhan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Muhammad Subhan\\source\\repos\\FYP\\obj\\",
+        "outputPath": "D:\\new\\FinalYearProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Muhammad Subhan\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -31,7 +31,7 @@ namespace FYP.Controllers
             string password = collection["LoginPasswordInput"];
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                ViewData["MyMessage"] = "Must be fields filled";
+                ViewData["MyMessage"] = "Enter the Email and Password";
                 return View("Login"); // redirect pr view bag or view data does not work
             } 
             else
@@ -75,29 +75,52 @@ namespace FYP.Controllers
                              },CookieAuthenticationDefaults.AuthenticationScheme
                              );
                          
-                               var principal = new ClaimsPrincipal(claimsIdentity);
+                            var principal = new ClaimsPrincipal(claimsIdentity);
                             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal).ConfigureAwait(false);
                       
+
                             HttpContext.Session.SetString("UserId", MyResponse!.Response.userId.ToString()!);
                             HttpContext.Session.SetString("FullName", MyResponse.Response.fullname!);
                             HttpContext.Session.SetString("UserRole", MyResponse!.Response.userRole!);
                             HttpContext.Session.SetString("Token", MyResponse.Token!);
-                          //  HttpContext.Session.Set("Image", MyResponse.Response.userImage);
+                            //  HttpContext.Session.Set("Image", MyResponse.Response.userImage);
                             // string token = tokenResponse.Token;
+                            return RedirectToAction("index", "Dashboard");
                         }
+                       
                     }
+                    ViewData["MyMessage"] = "Invalid Crediantials";
+                    return View("Login");
                 }
                 catch (Exception e)
                 {
                     return View("Error");   
                 }
-                return RedirectToAction("index", "Dashboard");
+               
             }
         }
         // GET: AuthController/Create
         public ActionResult ForgotPassword()
         {
             return View();
+        }
+        // POST: AuthController/Create
+        [HttpPost]
+        public ActionResult ForgotPassword(IFormCollection Form)
+        {
+            string email = Form["email"];
+            string cnic = Form["cnic"];
+            string dateofbirth = Form["dateofbirth"];
+            email = email.ToLower().Trim();
+           
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(cnic) || string.IsNullOrEmpty(dateofbirth))
+            {
+                ViewData["MyMessage"] = "Enter the Email and Password";
+                return View(); // redirect pr view bag or view data does not work
+            }
+            else
+
+                return View();
         }
         // GET: AuthController/Signup
         public ActionResult Signup()

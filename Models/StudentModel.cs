@@ -19,5 +19,6 @@
         public int Semester { get; set; }
         public DateTime CreatedAt { get; set; }
         public string? RollNumber { get; set; }
+        public string? Gender { get; set; }
     }
 }

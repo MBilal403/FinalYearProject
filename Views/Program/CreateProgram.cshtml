@@ -1,0 +1,208 @@
+﻿@model IEnumerable<ProgramModel>
+@using Microsoft.AspNetCore.Identity
+@{
+    ViewData["Title"] = "Departments";
+}
+<div class="row" style="padding-top: 2%;">
+    @if (User.IsInRole("SuperAdmin"))
+    {
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Create New Program</h4>
+
+                    <form class="form-inline" asp-route-id = "@ViewBag.id" asp-action="CreateProgram" asp-controller="Program">
+                        <label class="sr-only" for="inlineFormInputName2"> Program Name</label>
+                        <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" name="programname" placeholder="Program Name" required>
+
+                        <label class="sr-only" for="inlineFormInputName2"> Program Short Name</label>
+                        <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" name="programshortname" placeholder="Program Short Name" required>
+
+                        <label class="sr-only" for="inlineFormInputName2"> Duration</label>
+                        <input type="Number" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" name="duration" placeholder="Duration" required>
+
+
+                        <button type="submit" class="btn btn-primary mb-2">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+    </div>
+    <div class="row" style="padding-top: 0%;">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">All Programs</h2>
+             
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Program Name</th>
+                                <th>Program Short Name</th>
+                                <th>Duration</th>
+                                <th>Created</th>
+                                @if (User.IsInRole("SuperAdmin"))
+                                {
+                                    <th>Status</th>
+
+                                    <th>Actions</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model.Any())
+                            {
+                                @foreach (var program in Model)
+                                {
+                                    <tr>
+                                        <td>@program.ProgramName</td>
+                                        <td>@program.ProgramShortName</td>
+                                        <td>@program.Duration</td>
+                                        <td>@program.CreatedAt.ToString("dd-MM-yyyy")</td>
+                                        @if (User.IsInRole("SuperAdmin"))
+                                        {
+                                            <td>
+                                                <!-- Default switch -->
+                                                <div class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="customSwitches-@program.ProgramId" @if (program.Status)
+                                                    {
+                                                        <text>checked</text>
+                                                    }>
+                                                    <label class="custom-control-label" for="customSwitches-@program.ProgramId"></label>
+                                                </div>
+                                            </td>
+
+                                            <td>
+                                                <a class="btn btn-info btn-sm" asp-action="EditDepartment" asp-route-id="@program.ProgramId" asp-controller="Department">Edit</a>
+                                            </td>
+                                        }
+                                    </tr>
+                                }
+                            }else
+                            {<tr>
+
+                            <td>There Is no Program</td>
+                            </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const switches = document.querySelectorAll('.custom-control-input');
+        const settingLinks = document.querySelectorAll('.setting-link');
+        const BaseURL = "https://localhost:7031";
+        switches.forEach((switchElement, index) => {
+            switchElement.addEventListener('change', function () {
+                const userId = this.id.split('-')[1];
+                const isEnabled = this.checked;
+
+                const settingLink = settingLinks[index];
+                var payload = {
+                    status: isEnabled
+                };
+                // Enable or disable the setting link based on switch state
+                if (isEnabled) {
+                    console.log('User', userId, 'enabled');
+
+                    $.ajax({
+                        url: BaseURL + "/program/ProgramStatus/" + userId,
+                        type: "PUT",
+                        contentType: "application/json",
+                        data: JSON.stringify(payload),
+                        success: function () {
+                            console.log("Department status updated successfully");
+    @*  settingLink.removeAttribute('disabled');
+                                settingLink.classList.remove('disabled');*@
+    @*  location.reload();*@
+                            },
+                        error: function (xhr, status, error) {
+                            console.log("An error occurred: " + error);
+                            // Handle error response
+                        }
+                    });
+
+                }
+                else {
+                    console.log('User', userId, 'disabled');
+
+                    $.ajax({
+                        url: "https://localhost:7031/Program/ProgramStatus/" + userId,
+                        type: "PUT",
+                        contentType: "application/json",
+                        data: JSON.stringify(payload),
+                        success: function () {
+                            console.log("Department status updated successfully");
+    @*  settingLink.removeAttribute('disabled');
+                                settingLink.classList.remove('disabled');*@
+                                location.reload();
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("An error occurred: " + error);
+    @*  settingLink.setAttribute('disabled', 'disabled');
+                                settingLink.classList.add('disabled');*@
+                            }
+                    });
+                }
+            });
+        });
+
+    @*    settingLinks.forEach(link => {
+            link.addEventListener('click', function (event) {
+            event.preventDefault();
+            const userId = this.getAttribute('data-user-id');
+
+            // Perform actions based on the user ID
+            console.log('Setting link clicked for User ID:', userId);
+            });
+            });*@
+        });
+    // Assume you have a button with the ID "update-status-button" and an input field with the ID "status-input"
+
+    @*    $(document).ready(function () {
+        $("#update-status-button").click(function () {
+        var departmentId = 1; // Replace with the actual department ID
+        var newStatus = $("#status-input").val();
+
+        // Create the JSON payload
+        var payload = {
+        status: newStatus
+        };
+
+        // Send the PUT request using jQuery's AJAX function
+        $.ajax({
+        url: "/department/DepartmentStatus/" + departmentId,
+        type: "PUT",
+        contentType: "application/json",
+        data: JSON.stringify(payload),
+        success: function () {
+        console.log("Department status updated successfully");
+        // Handle success response
+        },
+        error: function (xhr, status, error) {
+        console.log("An error occurred: " + error);
+        // Handle error response
+        }
+        });
+        });
+        });*@
+
+
+
+
+
+
+
+
+</script>
+
+
+

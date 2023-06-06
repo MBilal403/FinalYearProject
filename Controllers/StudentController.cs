@@ -4,11 +4,17 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
+using System.Text;
 
 namespace FYP.Controllers
 {
     public class StudentController : Controller
     {
+        public FileManager _manager { get; set; }
+        public StudentController(FileManager manager)
+        {
+            _manager = manager;
+        }
         // GET: StudentController
         public async Task<ActionResult> ViewStudents()
         {
@@ -33,7 +39,7 @@ namespace FYP.Controllers
                 }
             }
             return View();
-           
+
         }
 
         // GET: StudentController/Details/5
@@ -43,7 +49,7 @@ namespace FYP.Controllers
         }
 
         // GET: StudentController/Create
-        public ActionResult Create()
+        public ActionResult CreateStudent()
         {
             return View();
         }
@@ -51,11 +57,70 @@ namespace FYP.Controllers
         // POST: StudentController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> CreateStudent(IFormCollection form, IFormFile userimage)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                // Retrieve form values from the IFormCollection
+                string fullName = form["fullname"];
+                string emailAddress = form["emailaddress"];
+                string fatherName = form["fathername"];
+                string rollNumber = form["rollnumber"];
+                string gender = form["gender"];
+                string dateOfBirth = form["dateofbirth"];
+                string address = form["address"];
+                string contactNumber = form["contactnumber"];
+                string city = form["city"];
+                string session = form["session"];
+                string program = form["program"];
+                string semester = form["semester"];
+                // Perform validation
+
+                string imagepath = _manager.GetFilePath(userimage!)!;
+
+                string[] pathParts = imagepath.Split(new[] { "wwwroot" }, StringSplitOptions.RemoveEmptyEntries);
+
+                string relativePath = pathParts[pathParts.Length - 1];
+
+                string pathWithBackslashes = relativePath.Replace('/', '\\');
+
+                int passwordLength = 10;
+                string password = PasswordGenerator.GeneratePassword(passwordLength);
+
+                var dto = new StudentModel()
+                {
+                    FullName = fullName,
+                    Email = emailAddress,
+                    Gender = gender,
+                    DateOfBirth = DateTime.Parse(dateOfBirth),
+                    Address = address,
+                    ContactNumber = contactNumber,
+                    City = city,
+                    Image = _manager.GetImageBytes(imagepath),
+                    ImagePath = pathWithBackslashes,
+                    Session = session,
+                    Password = password,
+                    Program = program,
+                    Semester = int.Parse(semester),
+                    CreatedAt = DateTime.Now,
+
+                };
+                using (HttpClient httpClient = new HttpClient())
+                {
+                    // Send the request and post the response
+                    var jsonRequest = JsonConvert.SerializeObject(dto);
+                    var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = await httpClient.PostAsync(BaseURL.baseURl + "/Student/StudentSignup", content);
+
+                    // Check if the response was successful
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("ViewStudents");
+
+                    }
+                    return View();
+                }
             }
             catch
             {

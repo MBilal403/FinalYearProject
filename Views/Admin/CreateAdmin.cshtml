@@ -16,7 +16,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Full Name</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="fullname" />
+                                <input type="text" class="form-control" name="fullname"/>
                             </div>
                         </div>
                     </div>
@@ -24,7 +24,8 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Email Address</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="emailaddress" />
+                                <input type="email" class="form-control" name="emailaddress" id="emailInput" />
+                                <span id="emailResult"></span>
                             </div>
                         </div>
                     </div>
@@ -105,3 +106,27 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#emailInput').on('input', function () {
+            var email = $(this).val();
+            checkEmailAvailability(email);
+        });
+
+        function checkEmailAvailability(email) {
+            $.ajax({
+                url: 'https://localhost:7031/student/checkemail',
+                type: 'GET',
+                data: { email: email },
+                success: function (result) {
+                    var message = result ? 'Email already registered' : 'Email available';
+                    $('#emailResult').text(message);
+                },
+                error: function () {
+                    $('#emailResult').text('Error occurred');
+                }
+            });
+        }
+    });
+</script>
