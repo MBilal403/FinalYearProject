@@ -6,7 +6,8 @@
             public string? DepartName { get; set; }
             public string? InchargeName { get; set; }
             public string? AdminName { get; set; }
-            public DateTime CreatedAt { get; set; }
+        public string? Department { get; set; }
+        public DateTime CreatedAt { get; set; }
             public bool Status { get; set; }
     }
 }

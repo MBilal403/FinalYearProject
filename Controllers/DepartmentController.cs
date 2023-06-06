@@ -326,14 +326,16 @@ namespace FYP.Controllers
         {
             string incharge = collection["incharge"];
             string admin = collection["admin"];
-           string inchargename = incharge.Trim();
-            string adminname = admin.Trim();
+
+         if(String.IsNullOrEmpty(incharge) && String.IsNullOrEmpty(admin)) {
+                return RedirectToAction("ViewDepartments");
+            }
             try
             {
                 var obj = new
                 {
-                    AdminName = adminname,
-                    InchargeName = inchargename
+                    AdminName = incharge,
+                    InchargeName = admin
                 };
                 using (HttpClient httpClient = new HttpClient())
                 {

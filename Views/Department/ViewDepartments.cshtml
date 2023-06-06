@@ -50,47 +50,46 @@
                             </tr>
                         </thead>
                         <tbody>
-                              @foreach (var department in Model)
-                              {
-                            <tr>
-                                <td>@department.DepartName</td>
-                                    @if (department.InchargeName == null)
+                               @if (Model != null && Model.Any())
+                                {
+                                    @foreach (var department in Model)
                                     {
-                                        <td>Pending..</td>
-                                    }
-                                    else
-                                    {
-                                        <td>@department.InchargeName</td>
-                                    }
-                                    @if( department.AdminName == null){
-                                        <td>Pending..</td>
-                                    }
-                                    else
-                                    {
-                                        <td>@department.AdminName</td>
-                                    }
-                               
-                                    <td>@department.CreatedAt.ToString("dd-MM-yyyy")</td>
-                                    @if (User.IsInRole("SuperAdmin"))
-                                    {
-                                <td>
-                                    <!-- Default switch -->
-                                        <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="customSwitches-@department.DepartId" @if (department.Status)
+                                        <tr>
+                                            <td>@department.DepartName</td>
+                                            <td>@department.InchargeName</td>
+                                            <td>@department.AdminName</td>
+
+                                            <td>@department.CreatedAt.ToString("dd-MM-yyyy")</td>
+                                            @if (User.IsInRole("SuperAdmin"))
                                             {
-                                                <text>checked</text>
-                                            }>
-                                            <label class="custom-control-label" for="customSwitches-@department.DepartId"></label>
-                                        </div>
-                             </td>
-                                 
-                                <td>
-                                   <a class="btn btn-info btn-sm" asp-action="EditDepartment" asp-route-id="@department.DepartId" asp-controller="Department">Edit</a> |
-                                            <a class="btn btn-danger btn-sm setting-link" asp-action="Setting" asp-controller="Department" asp-route-id="@department.DepartId" data-user-id="@department.DepartId">Settings</a>
-                                </td>
+                                                <td>
+                                                    <!-- Default switch -->
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="customSwitches-@department.DepartId" @if (department.Status)
+                                                        {
+                                                            <text>checked</text>
+                                                        }
+                                                        >
+                                                        <label class="custom-control-label" for="customSwitches-@department.DepartId"></label>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <a class="btn btn-info btn-sm" asp-action="EditDepartment" asp-route-id="@department.DepartId" asp-controller="Department">Edit</a> |
+                                                    <a class="btn btn-danger btn-sm setting-link" asp-action="Setting" asp-controller="Department" asp-route-id="@department.DepartId" data-user-id="@department.DepartId">Settings</a>
+                                                </td>
+                                            }
+                                        </tr>
                                     }
-                            </tr>
-                           }
+
+                            }
+                            else
+                            {
+                                <tr>
+
+                                    <td>There is no department</td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
