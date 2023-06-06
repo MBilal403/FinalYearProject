@@ -9,141 +9,141 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = FYP
 build_property.RootNamespace = FYP
-build_property.ProjectDir = D:\new\FinalYearProject\
+build_property.ProjectDir = D:\Bilal\FinalYearProject\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\new\FinalYearProject
+build_property.MSBuildProjectDirectory = D:\Bilal\FinalYearProject
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/new/FinalYearProject/Views/Admin/CreateAdmin.cshtml]
+[D:/Bilal/FinalYearProject/Views/Admin/CreateAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlQWRtaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Admin/DetailAdmin.cshtml]
+[D:/Bilal/FinalYearProject/Views/Admin/DetailAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGV0YWlsQWRtaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Admin/ViewAdmins.cshtml]
+[D:/Bilal/FinalYearProject/Views/Admin/ViewAdmins.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVmlld0FkbWlucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Auth/ForgotPassword.cshtml]
+[D:/Bilal/FinalYearProject/Views/Auth/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Auth/Login.cshtml]
+[D:/Bilal/FinalYearProject/Views/Auth/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Auth/Registration.cshtml]
+[D:/Bilal/FinalYearProject/Views/Auth/Registration.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3RyYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Auth/Signup.cshtml]
+[D:/Bilal/FinalYearProject/Views/Auth/Signup.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxTaWdudXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Auth/Verification.cshtml]
+[D:/Bilal/FinalYearProject/Views/Auth/Verification.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxWZXJpZmljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Dashboard/Error-500.cshtml]
+[D:/Bilal/FinalYearProject/Views/Dashboard/Error-500.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEVycm9yLTUwMC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Dashboard/MainPage.cshtml]
+[D:/Bilal/FinalYearProject/Views/Dashboard/MainPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXE1haW5QYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Department/AddDepartment.cshtml]
+[D:/Bilal/FinalYearProject/Views/Department/AddDepartment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxBZGREZXBhcnRtZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Department/DeleteDepartment.cshtml]
+[D:/Bilal/FinalYearProject/Views/Department/DeleteDepartment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxEZWxldGVEZXBhcnRtZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Department/EditDepartment.cshtml]
+[D:/Bilal/FinalYearProject/Views/Department/EditDepartment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxFZGl0RGVwYXJ0bWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Department/Search.cshtml]
+[D:/Bilal/FinalYearProject/Views/Department/Search.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxTZWFyY2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Department/Setting.cshtml]
+[D:/Bilal/FinalYearProject/Views/Department/Setting.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxTZXR0aW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Department/ViewActiveDepartment.cshtml]
+[D:/Bilal/FinalYearProject/Views/Department/ViewActiveDepartment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxWaWV3QWN0aXZlRGVwYXJ0bWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Department/ViewDepartments.cshtml]
+[D:/Bilal/FinalYearProject/Views/Department/ViewDepartments.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxWaWV3RGVwYXJ0bWVudHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Department/ViewNonActiveDepartment.cshtml]
+[D:/Bilal/FinalYearProject/Views/Department/ViewNonActiveDepartment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxWaWV3Tm9uQWN0aXZlRGVwYXJ0bWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Home/Index.cshtml]
+[D:/Bilal/FinalYearProject/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Home/Privacy.cshtml]
+[D:/Bilal/FinalYearProject/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Program/CreateProgram.cshtml]
+[D:/Bilal/FinalYearProject/Views/Program/CreateProgram.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZ3JhbVxDcmVhdGVQcm9ncmFtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Program/SearchDepartmentprogram.cshtml]
+[D:/Bilal/FinalYearProject/Views/Program/SearchDepartmentprogram.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZ3JhbVxTZWFyY2hEZXBhcnRtZW50cHJvZ3JhbS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Program/ViewPrograms.cshtml]
+[D:/Bilal/FinalYearProject/Views/Program/ViewPrograms.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZ3JhbVxWaWV3UHJvZ3JhbXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Shared/Error.cshtml]
+[D:/Bilal/FinalYearProject/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Shared/_FullLayout.cshtml]
+[D:/Bilal/FinalYearProject/Views/Shared/_FullLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9GdWxsTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Bilal/FinalYearProject/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Student/CreateStudent.cshtml]
+[D:/Bilal/FinalYearProject/Views/Student/CreateStudent.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxDcmVhdGVTdHVkZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Student/ViewStudents.cshtml]
+[D:/Bilal/FinalYearProject/Views/Student/ViewStudents.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxWaWV3U3R1ZGVudHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Teacher/CreateTeacher.cshtml]
+[D:/Bilal/FinalYearProject/Views/Teacher/CreateTeacher.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclxDcmVhdGVUZWFjaGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Teacher/ViewTeachers.cshtml]
+[D:/Bilal/FinalYearProject/Views/Teacher/ViewTeachers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclxWaWV3VGVhY2hlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/_ViewImports.cshtml]
+[D:/Bilal/FinalYearProject/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/_ViewStart.cshtml]
+[D:/Bilal/FinalYearProject/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/new/FinalYearProject/Views/Shared/_Layout.cshtml]
+[D:/Bilal/FinalYearProject/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-ghxt4wc268
