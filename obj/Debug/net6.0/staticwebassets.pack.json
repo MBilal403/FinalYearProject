@@ -881,6 +881,10 @@
       "PackagePath": "staticwebassets\\images\\logo1.svg"
     },
     {
+      "Id": "D:\\Bilal\\FinalYearProject\\wwwroot\\images\\pu.jpg",
+      "PackagePath": "staticwebassets\\images\\pu.jpg"
+    },
+    {
       "Id": "D:\\Bilal\\FinalYearProject\\wwwroot\\images\\samples\\1280x768\\1.jpg",
       "PackagePath": "staticwebassets\\images\\samples\\1280x768\\1.jpg"
     },

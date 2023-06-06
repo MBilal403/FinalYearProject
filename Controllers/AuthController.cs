@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using NuGet.Common;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text;
 
@@ -106,21 +107,63 @@ namespace FYP.Controllers
         }
         // POST: AuthController/Create
         [HttpPost]
-        public ActionResult ForgotPassword(IFormCollection Form)
+        public async Task<ActionResult> ForgotPassword(IFormCollection Form)
         {
             string email = Form["email"];
-            string cnic = Form["cnic"];
-            string dateofbirth = Form["dateofbirth"];
+            
+            string dob = Form["dateofbirth"];
+            DateTime dateTime = DateTime.Parse(dob);
+
             email = email.ToLower().Trim();
            
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(cnic) || string.IsNullOrEmpty(dateofbirth))
+            if (string.IsNullOrEmpty(email) ||  string.IsNullOrEmpty(dob))
             {
                 ViewData["MyMessage"] = "Enter the Email and Password";
                 return View(); // redirect pr view bag or view data does not work
             }
             else
+            {
+
+                ForgotPasswordDto passDto = new ForgotPasswordDto
+                {
+                
+                    Email = email,
+                    dateofbirth = dateTime
+                };
+
+                string jsonBody = JsonConvert.SerializeObject(passDto);
+
+                HttpContent content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+
+                try
+                {
+                    using (HttpClient _httpClient = new HttpClient())
+                    {
+                        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token")!);
+
+                        HttpResponseMessage response = await _httpClient.PostAsync(BaseURL.baseURl + "/auth/GetPasswordMail", content);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            string responseContent = await response.Content.ReadAsStringAsync();
+                            ViewBag.SuccessMessage = responseContent + "Check your mail";
+                        }
+                        else
+                        {
+
+                            ViewBag.ErrorMessage = "API request failed: ";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.ErrorMessage = "An error occurred: " + ex.Message;
+                }
 
                 return View();
+            }
+
+        
         }
         // GET: AuthController/Signup
         public ActionResult Signup()

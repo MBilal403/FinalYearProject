@@ -174,20 +174,7 @@
                                     <span class="menu-title">Programs</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" asp-action="ViewDepartments" asp-controller="Department" aria-expanded="false" aria-controls="form-elements">
-                                    <i class="icon-columns menu-icon"></i>
-                                    <span class="menu-title">Programs</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="form-elements">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" asp-action="ViewDepartments" asp-controller="Department">Undergruadate</a></li>
-                                        <li class="nav-item"><a class="nav-link" asp-action="ViewDepartments" asp-controller="Department">Gruadate</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-
+                       
                             <li class="nav-item">
                                 <a class="nav-link" asp-action="ViewDepartments" asp-controller="Department">
                                     <i class="icon-layout menu-icon"></i>
@@ -209,9 +196,15 @@
                             </li>
                           
                             <li class="nav-item">
-                                <a class="nav-link" asp-action="ViewDepartments" asp-controller="Department">
+                                <a class="nav-link" asp-action="About" asp-controller="Home">
                                     <i class="icon-paper menu-icon"></i>
                                     <span class="menu-title">About</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="ContactUs" asp-controller="Home">
+                                    <i class="icon-paper menu-icon"></i>
+                                    <span class="menu-title">Contact Us</span>
                                 </a>
                             </li>
                         }
