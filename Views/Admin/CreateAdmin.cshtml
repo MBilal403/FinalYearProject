@@ -16,7 +16,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Full Name</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="fullname"/>
+                                <input type="text" class="form-control" name="fullname" required />
                             </div>
                         </div>
                     </div>
@@ -24,7 +24,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Email Address</label>
                             <div class="col-sm-9">
-                                <input type="email" class="form-control" name="emailaddress" id="emailInput" />
+                                <input type="email" class="form-control" name="emailaddress" id="emailInput"  required/>
                                 <span id="emailResult"></span>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Date of Birth</label>
                             <div class="col-sm-9">
-                                <input class="form-control" type="date" placeholder="dd/mm/yyyy"  name="dateofbirth"/>
+                                <input class="form-control" type="date" placeholder="dd/mm/yyyy" name="dateofbirth" required />
                             </div>
                         </div>
                     </div>
@@ -67,14 +67,14 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Address</label>
                             <div class="col-sm-9">
-                                <textarea class="form-control" id="exampleTextarea1" name="address" rows="4"></textarea>
+                                <textarea class="form-control" id="exampleTextarea1" name="address" rows="4" required></textarea>
                             </div>
                         </div>
                       
                     </div>
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Phone Number</label>
+                            <label class="col-sm-3 col-form-label" required>Phone Number</label>
                             <div class="col-sm-9">
                                 <input type="number" class="form-control" name="contactnumber" />
                             </div>
