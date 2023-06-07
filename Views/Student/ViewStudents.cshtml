@@ -7,10 +7,12 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Students Detail</h4>
-         
+            if (User.IsInRole("Admin"))
+            {
             <a class=" btn btn-primary btn-md " asp-action="CreateStudent" asp-controller="Student">
                 New Student
             </a>
+            }
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>

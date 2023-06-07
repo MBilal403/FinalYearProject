@@ -8,9 +8,12 @@
         <div class="card-body">
             <h4 class="card-title">Administrator Detail</h4>
             <h2 class="card-title">Department Details</h2>
+            if (User.IsInRole("SuperAdmin"))
+            {
             <a class=" btn btn-primary btn-md " asp-action="CreateAdmin" asp-controller="Admin">
                 New Admin
             </a>
+            }
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -44,10 +47,13 @@
                             <td>
                                     @user.CreatedAt.ToString("dd-MM-yyyy")
                             </td>
+                                if (User.IsInRole("SuperAdmin"))
+                                {
                             <td>
                                 <a class="btn btn-info btn-sm" asp-action="EditDepartment" asp-controller="Department">Edit</a> |
                                 <a class="btn btn-danger btn-sm" asp-action="DeleteDepartment" asp-controller="Department">Delete</a>
                             </td>
+                                }
                         </tr>
                         }                       
                     </tbody>
