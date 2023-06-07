@@ -239,6 +239,7 @@ namespace FYP.Controllers
         // GET: AuthController/Logout/
         public ActionResult Logout()
         {
+            HttpContext.Session.Clear();
             return RedirectToAction("index");
         }
 

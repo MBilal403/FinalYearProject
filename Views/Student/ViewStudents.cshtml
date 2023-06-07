@@ -7,7 +7,7 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Students Detail</h4>
-            if (User.IsInRole("Admin"))
+            @if (User.IsInRole("Admin"))
             {
             <a class=" btn btn-primary btn-md " asp-action="CreateStudent" asp-controller="Student">
                 New Student
@@ -32,26 +32,39 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach(var user in Model){
-                        <tr>
-                            <td class="py-1">
-                                    <img src=@user.ImagePath alt="image">
-                            </td>
-                            <td>
-                                    @user.FullName
-                            </td>
-                            <td>
-                                    @user.Email
-                            </td>
-                            <td>
-                                    @user.CreatedAt.ToString("dd-MM-yyyy")
-                            </td>
-                            <td>
-                                <a class="btn btn-info btn-sm" asp-action="EditDepartment" asp-controller="Department">Edit</a> |
-                                <a class="btn btn-danger btn-sm" asp-action="DeleteDepartment" asp-controller="Department">Delete</a>
-                            </td>
-                        </tr>
-                        }                       
+                           @if (Model != null)
+                        {
+                            @foreach (var user in Model)
+                            {
+                                <tr>
+                                    <td class="py-1">
+                                        <img src=@user.ImagePath alt="image">
+                                    </td>
+                                    <td>
+                                        @user.FullName
+                                    </td>
+                                    <td>
+                                        @user.Email
+                                    </td>
+                                    <td>
+                                        @user.CreatedAt.ToString("dd-MM-yyyy")
+                                    </td>
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <td>
+                                            <a class="btn btn-info btn-sm" asp-action="EditDepartment" asp-controller="Department">Edit</a> |
+                                            <a class="btn btn-danger btn-sm" asp-action="DeleteDepartment" asp-controller="Department">Delete</a>
+                                        </td>
+                                    }
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                No Student
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>

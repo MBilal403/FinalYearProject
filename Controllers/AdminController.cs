@@ -88,15 +88,15 @@ namespace FYP.Controllers
                     // Set the authorization token in the request headers
                     httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token")!);
 
-                    string apiURl = BaseURL.baseURl + "/student/checkemail?email=" + emailAddress;
+                 //   string apiURl = BaseURL.baseURl + "/student/checkemail?email=" + emailAddress;
                     // Send the request and get the response
-                    HttpResponseMessage response = await httpClient.GetAsync(apiURl);
-                    if (response.IsSuccessStatusCode)
+                  //  HttpResponseMessage response = await httpClient.GetAsync(apiURl);
+                /*    if (response.IsSuccessStatusCode)
                     {
                         ViewBag.error = "Email Already registered";
                         return View();
 
-                    }
+                    }*/
 
                     string path = _manager.GetFilePath(userimage!)!;
                     string[] pathParts = path.Split(new[] { "wwwroot" }, StringSplitOptions.RemoveEmptyEntries);
