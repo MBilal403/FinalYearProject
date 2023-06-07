@@ -83,6 +83,7 @@ namespace FYP.Controllers
                             HttpContext.Session.SetString("UserId", MyResponse!.Response.userId.ToString()!);
                             HttpContext.Session.SetString("FullName", MyResponse.Response.fullname!);
                             HttpContext.Session.SetString("UserRole", MyResponse!.Response.userRole!);
+                            HttpContext.Session.SetString("Email", MyResponse!.Response.email!);
                             HttpContext.Session.SetString("Token", MyResponse.Token!);
                             //  HttpContext.Session.Set("Image", MyResponse.Response.userImage);
                             // string token = tokenResponse.Token;

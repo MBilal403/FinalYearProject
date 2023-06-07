@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Lf1XQa+OGWWrNQIvqwXmTI/6XFgvpKNfcQbJ9+PHEsY=",
+  "Hash": "mxAGXtZti9IfPBIgaZ210cGlAx3IwpuHh5KdsAyoWFQ=",
   "Source": "FYP",
   "BasePath": "_content/FYP",
   "Mode": "Default",
@@ -6475,6 +6475,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\UserImages\\aaf4ffc117.JPG"
+    },
+    {
+      "Identity": "D:\\Bilal\\FinalYearProject\\wwwroot\\UserImages\\ab08113987.jpg",
+      "SourceId": "FYP",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Bilal\\FinalYearProject\\wwwroot\\",
+      "BasePath": "_content/FYP",
+      "RelativePath": "UserImages/ab08113987.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UserImages\\ab08113987.jpg"
     },
     {
       "Identity": "D:\\Bilal\\FinalYearProject\\wwwroot\\UserImages\\be5aea481f.jpg",

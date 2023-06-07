@@ -74,19 +74,35 @@ namespace FYP.Controllers
 
                     return View();
         }
-        [HttpPost]
-        public async Task<IActionResult> Annoncement(IFormCollection collection)
+
+
+        public IActionResult Announcement()
         {
 
-            string name = collection["name"];
-            string email = collection["email"];
-            string message = collection["message"];
 
-            MailDto mailDto = new MailDto
+            return View();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Announcement(IFormCollection collection)
+        {
+
+            string title = collection["title"];
+            
+            string message = collection["message"];
+            string userrole = HttpContext.Session.GetString("UserRole");
+            string name = HttpContext.Session.GetString("FullName");
+            string email = HttpContext.Session.GetString("Email");
+
+            AnnouncementModel mailDto = new AnnouncementModel
             {
-                Name = name,
-                Email = email,
-                Message = message
+                Title = title,
+               UserRole = userrole,
+                Message = message,
+                CreatedAt = DateTime.Now,
+                UserName = name,
+                UserEmail = email,
             };
 
             string jsonBody = JsonConvert.SerializeObject(mailDto);
@@ -99,12 +115,12 @@ namespace FYP.Controllers
                 {
                     _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token")!);
 
-                    HttpResponseMessage response = await _httpClient.PostAsync(BaseURL.baseURl + "/home/sendmail", content);
+                    HttpResponseMessage response = await _httpClient.PostAsync(BaseURL.baseURl + "/Announcement/AddAnnouncement", content);
 
                     if (response.IsSuccessStatusCode)
                     {
                         string responseContent = await response.Content.ReadAsStringAsync();
-                        ViewBag.SuccessMessage = "Response: " + responseContent + " Thanks";
+                        ViewBag.SuccessMessage =  responseContent ;
                     }
                     else
                     {
