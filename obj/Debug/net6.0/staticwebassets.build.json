@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mxAGXtZti9IfPBIgaZ210cGlAx3IwpuHh5KdsAyoWFQ=",
+  "Hash": "dS03cNJREKxrMa4Fs6x7rSzNaG9B2C64isGq7C0pZxY=",
   "Source": "FYP",
   "BasePath": "_content/FYP",
   "Mode": "Default",
@@ -6256,6 +6256,23 @@
       "OriginalItemSpec": "wwwroot\\UserImages\\1040789b-b815-4ea6-81b6-ce555fb6be1f.JPG"
     },
     {
+      "Identity": "D:\\Bilal\\FinalYearProject\\wwwroot\\UserImages\\131e55eaa4.jpg",
+      "SourceId": "FYP",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Bilal\\FinalYearProject\\wwwroot\\",
+      "BasePath": "_content/FYP",
+      "RelativePath": "UserImages/131e55eaa4.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UserImages\\131e55eaa4.jpg"
+    },
+    {
       "Identity": "D:\\Bilal\\FinalYearProject\\wwwroot\\UserImages\\182c624253.jpg",
       "SourceId": "FYP",
       "SourceType": "Discovered",
@@ -6594,6 +6611,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\UserResume\\135780bf06.pdf"
+    },
+    {
+      "Identity": "D:\\Bilal\\FinalYearProject\\wwwroot\\UserResume\\13c78f0023.pdf",
+      "SourceId": "FYP",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Bilal\\FinalYearProject\\wwwroot\\",
+      "BasePath": "_content/FYP",
+      "RelativePath": "UserResume/13c78f0023.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UserResume\\13c78f0023.pdf"
     },
     {
       "Identity": "D:\\Bilal\\FinalYearProject\\wwwroot\\UserResume\\1b3ca53fc2.pdf",

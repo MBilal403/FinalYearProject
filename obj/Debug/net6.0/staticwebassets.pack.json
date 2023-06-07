@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\UserImages\\1040789b-b815-4ea6-81b6-ce555fb6be1f.JPG"
     },
     {
+      "Id": "D:\\Bilal\\FinalYearProject\\wwwroot\\UserImages\\131e55eaa4.jpg",
+      "PackagePath": "staticwebassets\\UserImages\\131e55eaa4.jpg"
+    },
+    {
       "Id": "D:\\Bilal\\FinalYearProject\\wwwroot\\UserImages\\182c624253.jpg",
       "PackagePath": "staticwebassets\\UserImages\\182c624253.jpg"
     },
@@ -99,6 +103,10 @@
     {
       "Id": "D:\\Bilal\\FinalYearProject\\wwwroot\\UserResume\\135780bf06.pdf",
       "PackagePath": "staticwebassets\\UserResume\\135780bf06.pdf"
+    },
+    {
+      "Id": "D:\\Bilal\\FinalYearProject\\wwwroot\\UserResume\\13c78f0023.pdf",
+      "PackagePath": "staticwebassets\\UserResume\\13c78f0023.pdf"
     },
     {
       "Id": "D:\\Bilal\\FinalYearProject\\wwwroot\\UserResume\\1b3ca53fc2.pdf",

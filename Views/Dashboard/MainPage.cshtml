@@ -19,7 +19,7 @@
             <div class="col-md-12 grid-margin">
                 <div class="row">
                     <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                        <h3 class="font-weight-bold">Welcome <span style="color: #54528e;">@Context.Session.GetString("FullName") </span></h3>
+                <h3 class="font-weight-bold">Welcome <span style="color: #54528e;">@Context.Session.GetString("FullName") </span></h3><p>(@Context.Session.GetString("UserRole"))</p>
                         <h6 class="font-weight-normal mb-0">All systems are running smoothly! </h6>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                         <div class="card card-tale">
                             <div class="card-body">
                                 <p class="mb-4">Number of Students</p>
-                                <p class="fs-30 mb-2">000</p>
+                        <p class="fs-30 mb-2" id="StudentCount">Loading...</p>
                               
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                         <div class="card card-dark-blue">
                             <div class="card-body">
                                 <p class="mb-4">Number of Teachers</p>
-                                <p class="fs-30 mb-2">000</p>
+                        <p class="fs-30 mb-2" id="TeacherCount">Loading...</p>
                              
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                         <div class="card card-light-blue">
                             <div class="card-body">
                                 <p class="mb-4">Number of Departments</p>
-                                <p class="fs-30 mb-2">000</p>
+                        <p class="fs-30 mb-2" id="departmentCount">Loading...</p>
                              
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                         <div class="card card-light-danger">
                             <div class="card-body">
                                 <p class="mb-4">Number of Programs</p>
-                                <p class="fs-30 mb-2">000</p>
+                        <p class="fs-30 mb-2" id="ProgramCount">Loading... </p>
                             
                             </div>
                         </div>
@@ -89,7 +89,7 @@
             <div class="col-md-4 grid-margin grid-margin-md-0 stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title"><span style="color: #54528e;">Information Tecnology</span></h4>
+                        <h4 class="card-title"><span style="color: #54528e;">Information Technology</span></h4>
                         <ul class="list-star">
                             <li>Lorem ipsum dolor sit amet</li>
                             <li>Consectetur adipiscing elit</li>
@@ -115,7 +115,73 @@
         <!-- main-panel ends -->
 
 <script>
- 
+    $(document).ready(function () {
+        // Make an AJAX GET request to the API
+        $.ajax({
+            url: 'https://localhost:7031/department/GetDepartmentCount',
+            type: 'GET',
+            success: function (data) {
+                // Update the department count in the card
+                $('#departmentCount').text(data);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+                $('#departmentCount').text('Error');
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        // Make an AJAX GET request to the API
+        $.ajax({
+            url: 'https://localhost:7031/Program/GetActiveProgramCount',
+            type: 'GET',
+            success: function (data) {
+                // Update the department count in the card
+                $('#ProgramCount').text(data);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+                $('#ProgramCount').text('Error');
+            }
+        });
+    });
+    $(document).ready(function () {
+        // Make an AJAX GET request to the API
+        $.ajax({
+            url: 'https://localhost:7031/auth/GetTeacherCount',
+            type: 'GET',
+            success: function (data) {
+                // Update the department count in the card
+                $('#TeacherCount').text(data);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+                $('#TeacherCount').text('Error');
+            }
+        });
+    });
+
+        $(document).ready(function () {
+        // Make an AJAX GET request to the API
+        $.ajax({
+            url: 'https://localhost:7031/Student/GetStudentCount',
+            type: 'GET',
+            success: function (data) {
+                // Update the department count in the card
+                $('#StudentCount').text(data);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+                $('#StudentCount').text('Error');
+            }
+        });
+    });
+
+
+
+
+
 
     $(document).ready(function () {
 

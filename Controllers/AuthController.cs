@@ -61,6 +61,7 @@ namespace FYP.Controllers
                                     userId = (int?)null,
                                     email = null as string,
                                     userRole = null as string,
+                                    ImagePath = null as string,
                                     fullname = null as string,
                                     userImage = (byte[])null!,
                                 },
@@ -85,6 +86,7 @@ namespace FYP.Controllers
                             HttpContext.Session.SetString("UserRole", MyResponse!.Response.userRole!);
                             HttpContext.Session.SetString("Email", MyResponse!.Response.email!);
                             HttpContext.Session.SetString("Token", MyResponse.Token!);
+                            HttpContext.Session.SetString("ImagePath", MyResponse.Response.ImagePath!);
                             //  HttpContext.Session.Set("Image", MyResponse.Response.userImage);
                             // string token = tokenResponse.Token;
                             return RedirectToAction("index", "Dashboard");
