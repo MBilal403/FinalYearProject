@@ -32,7 +32,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                           @if (Model != null)
+                        @if (Model != null && Model.Any())
                         {
                             @foreach (var user in Model)
                             {
@@ -61,7 +61,10 @@
                         }else
                         {
                             <tr>
-                                No teacher
+                                <td>
+                                    No teacher
+                                </td>
+                               
                             </tr>
                         }
                     </tbody>
