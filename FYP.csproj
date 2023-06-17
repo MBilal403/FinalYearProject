@@ -9,12 +9,16 @@
   <ItemGroup>
     <Compile Remove="Repository\**" />
     <Compile Remove="Services\**" />
+    <Compile Remove="Views\Error\**" />
     <Content Remove="Repository\**" />
     <Content Remove="Services\**" />
+    <Content Remove="Views\Error\**" />
     <EmbeddedResource Remove="Repository\**" />
     <EmbeddedResource Remove="Services\**" />
+    <EmbeddedResource Remove="Views\Error\**" />
     <None Remove="Repository\**" />
     <None Remove="Services\**" />
+    <None Remove="Views\Error\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,10 +52,6 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.30.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Error\" />
   </ItemGroup>
 
 </Project>

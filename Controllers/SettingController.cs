@@ -1,15 +1,41 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FYP.Helpers;
+using FYP.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
 
 namespace FYP.Controllers
 {
-    public class CoursesController : Controller
+    public class SettingController : Controller
     {
         // GET: CoursesController
-        public ActionResult ViewCourses()
+        public async Task<ActionResult> ViewDepartmentPrograms()
         {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                // Set the authorization token in the request headers
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token")!);
+
+                string apiURl = BaseURL.baseURl + "/department/GetDepartmentPrograms";
+                // Send the request and get the response
+                HttpResponseMessage response = await httpClient.GetAsync(apiURl);
+                if (response.IsSuccessStatusCode)
+                {
+                    // Read the response content
+                    string jsonResponse = await response.Content.ReadAsStringAsync();
+                    List<DepartmentModel> departments = JsonConvert.DeserializeObject<List<DepartmentModel>>(jsonResponse)!;
+                    /* foreach(var model in departments)
+                      {
+                      _logger.LogInformation(model.DepartId.ToString());
+                      }*/
+                    return View(departments);
+
+                }
+            }
             return View();
         }
+
 
         // GET: CoursesController/Details/5
         public ActionResult Details(int id)

@@ -9,5 +9,6 @@
         public string? Department { get; set; }
         public DateTime CreatedAt { get; set; }
             public bool Status { get; set; }
+        public List<ProgramModel>? Programs { get; set; }
     }
 }
