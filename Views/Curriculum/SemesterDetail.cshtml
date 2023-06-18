@@ -1,53 +1,62 @@
-﻿@model IEnumerable<DepartmentModel>
+﻿@model IEnumerable<SemesterModel>
 @using Microsoft.AspNetCore.Identity
 @{
     ViewData["Title"] = "Semester";
 }
-<div class="row" style="padding-top: 2%;">
-    <div class="col-12 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-
-                <form asp-controller="Program" asp-action="SearchDepartmentprogram" method="get">
-                    <div class="input-group">
-                        <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-                            <span class="input-group-text" id="search">
-                                <i class="icon-search"></i>
-                            </span>
-                        </div>
-                        <input type="text" class="form-control" id="navbar-search-input" name="searchQuery" placeholder="Search now" aria-label="search" aria-describedby="search">
-                        <button type="submit" class="btn btn-primary">Search</button>
-                    </div>
-                </form>
+<div class="col-lg-12 grid-margin stretch-card" style="padding-top: 2%">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title"></h2>
+            @if (User.IsInRole("SuperAdmin"))
+            {
+                <a class=" btn btn-primary btn-md " asp-route-id="@Model.Last().SemesterNo" asp-route-id1="@Model.Last().ProgramFid" asp-action="CreateSemester" asp-controller="Curriculum">
+                New Semester
+            </a>
+            }
             </div>
-        </div>
-    </div>
+      </div>
 </div>
+
+
+
 @if (Model != null && Model.Any())
 {
-    @foreach (var department in Model)
+   @* <h2 class="card-title" style="color:#54528e">@ViewBag.program.ProgramName</h2>*@
+    @foreach (var semester in Model)
     {
         <div class="row" style="padding-top: 0%;">
             <div class="col-12 grid-margin stretch-card">
 
                 <div class="card">
                     <div class="card-body">
-                        <h2 class="card-title" style="color:#54528e">@department.DepartName</h2>
+                        <h2 class="card-title" style="color:#54528e">Semester @semester.SemesterNo</h2>
+                        @if (User.IsInRole("SuperAdmin"))
+                        {
+                                <a class="btn btn-danger btn-sm setting-link" asp-action="SemesterDetail" asp-controller="Curriculum">Details</a>
+                            
+                        }
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Program Name</th>
-                                        <th>Short Name</th>
-                                        <th>Duration </th>
-                                        @if (User.IsInRole("SuperAdmin"))
-                                        {
-                                            <th>Semester details</th>
-                                        }
+                                        <th>Course Code</th>
+                                        <th>Course Title</th>
+                                        <th>Credit Hours</th>
+                                        <th>Teacher Name</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if (department.Programs != null)
+
+                                    <tr>
+                                        <td>@semester.Course!.CourseCode</td>
+                                        <td>@semester.Course.CourseTitle</td>
+                                        <td>@semester.Course.CourseCreditHours</td>
+                                        <td>@semester.User.FullName</td>
+                                     
+                                    </tr>
+
+
+                                  @*  @if (department.Programs != null)
                                     {
                                         @foreach (var program in department.Programs)
                                         {
@@ -71,7 +80,7 @@
 
                                             <td>There Is no Active Department</td>
                                         </tr>
-                                    }
+                                    }*@
                                 </tbody>
                             </table>
                         </div>
@@ -87,7 +96,7 @@ else
 {
 
 
-    <p>There Is no Active Department</p>
+    <p>There Is no Semester</p>
 
 }
 <script>

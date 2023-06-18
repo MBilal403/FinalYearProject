@@ -25,6 +25,9 @@ namespace FYP.Controllers
                     // Read the response content
                     string jsonResponse = await response.Content.ReadAsStringAsync();
                     List<DepartmentModel> departments = JsonConvert.DeserializeObject<List<DepartmentModel>>(jsonResponse)!;
+                    
+                    
+                    
                     /* foreach(var model in departments)
                       {
                       _logger.LogInformation(model.DepartId.ToString());
@@ -38,23 +41,80 @@ namespace FYP.Controllers
 
 
         // GET: CoursesController/Details/5
-        public ActionResult SemesterDetail()
+        public async Task<ActionResult> SemesterDetail(int id)
         {
+            List<UserModel> users = new List<UserModel>();
+            List<ProgramModel> programs = new List<ProgramModel>();
+            List<CourseModel> courses = new List<CourseModel>();
+            using (HttpClient httpClient = new HttpClient())
+            {
+                // Set the authorization token in the request headers
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token")!);
+
+                string apiURl = BaseURL.baseURl + "/Semester/GetByProgramId/" + id;
+                // Send the request and get the response
+                HttpResponseMessage response = await httpClient.GetAsync(apiURl);
+                if (response.IsSuccessStatusCode)
+                {
+                    // Read the response content
+                    string jsonResponse = await response.Content.ReadAsStringAsync();
+                    List<SemesterModel> semesters = JsonConvert.DeserializeObject<List<SemesterModel>>(jsonResponse)!;
+                    var re =  semesters.OrderBy(t => t.SemesterNo);
 
 
+                    foreach (var model in semesters)
+                    {
+                        users.Add(model.User!);
+                        programs.Add(model.Program!);
+                        courses.Add(model.Course!);
+                    }
+                    ViewBag.user = users;
+                    ViewBag.program = programs;
+                    ViewBag.course = courses;
+                    return View(semesters);
+
+                }
+            }
             return View();
         }
 
         // GET: CoursesController/Create
-        public ActionResult Create()
+        public async Task<ActionResult> CreateSemester(int id , int id1)
         {
+         
+            using (HttpClient httpClient = new HttpClient())
+            {
+                // Set the authorization token in the request headers
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token")!);
+
+                string apiURl = BaseURL.baseURl + "/Semester/GetByProgramId/" + id1;
+                // Send the request and get the response
+                HttpResponseMessage response = await httpClient.GetAsync(apiURl);
+                if (response.IsSuccessStatusCode)
+                {
+                    // Read the response content
+                    string jsonResponse = await response.Content.ReadAsStringAsync();
+                    List<SemesterModel> semesters = JsonConvert.DeserializeObject<List<SemesterModel>>(jsonResponse)!;
+                    var semester =  semesters.Where(t => t.SemesterId == id);
+                    if (id == null)
+                    {
+
+                    }
+
+                    return View(semester);
+
+                }
+            }
             return View();
+
+
+
         }
 
         // POST: CoursesController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult CreateSemester(IFormCollection collection)
         {
             try
             {
