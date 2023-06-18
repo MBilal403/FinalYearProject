@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<DepartmentModel>
 @using Microsoft.AspNetCore.Identity
 @{
-    ViewData["Title"] = "Courses";
+    ViewData["Title"] = "Semester";
 }
 <div class="row" style="padding-top: 2%;">
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-               
+
                 <form asp-controller="Program" asp-action="SearchDepartmentprogram" method="get">
                     <div class="input-group">
                         <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
@@ -23,13 +23,13 @@
         </div>
     </div>
 </div>
-  @if (Model != null && Model.Any())
-        {
-            @foreach (var department in Model)
-            {
-<div class="row" style="padding-top: 0%;">
-    <div class="col-12 grid-margin stretch-card">
-       
+@if (Model != null && Model.Any())
+{
+    @foreach (var department in Model)
+    {
+        <div class="row" style="padding-top: 0%;">
+            <div class="col-12 grid-margin stretch-card">
+
                 <div class="card">
                     <div class="card-body">
                         <h2 class="card-title" style="color:#54528e">@department.DepartName</h2>
@@ -47,7 +47,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if (department.Programs != null )
+                                    @if (department.Programs != null)
                                     {
                                         @foreach (var program in department.Programs)
                                         {
@@ -57,28 +57,29 @@
                                                 <td>@program.Duration</td>
                                                 @if (User.IsInRole("SuperAdmin"))
                                                 {
-                                                   
+
                                                     <td>
-                                                        <a class="btn btn-danger btn-sm setting-link" asp-action="Setting" asp-controller="Department" asp-route-id="@department.DepartId" data-user-id="@department.DepartId">Details</a>
+                                                        <a class="btn btn-danger btn-sm setting-link" asp-action="SemesterDetail" asp-controller="Curriculum">Details</a>
                                                     </td>
                                                 }
                                             </tr>
                                         }
-                                    }else
-                                     {
-                                    <tr>
+                                    }
+                                    else
+                                    {
+                                        <tr>
 
-                                      <td>There Is no Active Department</td>
+                                            <td>There Is no Active Department</td>
                                         </tr>
-                                      }
+                                    }
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-       
-    </div>
-</div>
+
+            </div>
+        </div>
     }
 
 }
@@ -117,7 +118,7 @@ else
     @*  settingLink.removeAttribute('disabled');
                                 settingLink.classList.remove('disabled');*@
     @*  location.reload();*@
-                            },
+                                },
                         error: function (xhr, status, error) {
                             console.log("An error occurred: " + error);
                             // Handle error response
@@ -143,7 +144,7 @@ else
                             console.log("An error occurred: " + error);
     @*  settingLink.setAttribute('disabled', 'disabled');
                                 settingLink.classList.add('disabled');*@
-                            }
+                                }
                     });
                 }
             });
@@ -158,7 +159,7 @@ else
             console.log('Setting link clicked for User ID:', userId);
             });
             });*@
-        });
+            });
     // Assume you have a button with the ID "update-status-button" and an input field with the ID "status-input"
 
     @*    $(document).ready(function () {

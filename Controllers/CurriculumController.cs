@@ -7,10 +7,10 @@ using System.Net.Http.Headers;
 
 namespace FYP.Controllers
 {
-    public class SettingController : Controller
+    public class CurriculumController : Controller
     {
         // GET: CoursesController
-        public async Task<ActionResult> ViewDepartmentPrograms()
+        public async Task<ActionResult> ViewCurriculum()
         {
             using (HttpClient httpClient = new HttpClient())
             {
@@ -38,8 +38,10 @@ namespace FYP.Controllers
 
 
         // GET: CoursesController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult SemesterDetail()
         {
+
+
             return View();
         }
 

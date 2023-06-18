@@ -48,8 +48,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxWZXJpZmljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Moodser/FinalYearProject/Views/Courses/ViewDepartmentPrograms.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlc1xWaWV3RGVwYXJ0bWVudFByb2dyYW1zLmNzaHRtbA==
+[D:/Moodser/FinalYearProject/Views/Course/CreateCourse.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXENyZWF0ZUNvdXJzZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Moodser/FinalYearProject/Views/Course/EditCourse.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXEVkaXRDb3Vyc2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Moodser/FinalYearProject/Views/Course/ViewCourses.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXFZpZXdDb3Vyc2VzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Moodser/FinalYearProject/Views/Curriculum/SemesterDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VycmljdWx1bVxTZW1lc3RlckRldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Moodser/FinalYearProject/Views/Curriculum/ViewCurriculum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VycmljdWx1bVxWaWV3Q3VycmljdWx1bS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Moodser/FinalYearProject/Views/Dashboard/Error-500.cshtml]

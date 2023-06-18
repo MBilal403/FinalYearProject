@@ -14,7 +14,6 @@ namespace FYP.Controllers
 {
     public class DashboardController : Controller
     {
-        private string BaseUrl = "https://localhost:7031";
         // GET: DashboardController
         [Authorize(Roles = "SuperAdmin,Teacher,Admin")]
         public async Task<ActionResult> Index()
@@ -24,7 +23,7 @@ namespace FYP.Controllers
                     // Set the authorization token in the request headers
                     httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token")!);
                     
-                    string apiURl = BaseUrl + "/auth/UserById/" +HttpContext.Session.GetString("UserId")!;
+                    string apiURl = BaseURL.baseURl + "/auth/UserById/" +HttpContext.Session.GetString("UserId")!;
                     // Send the request and get the response
                     HttpResponseMessage response = await httpClient.GetAsync(apiURl);
                     

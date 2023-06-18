@@ -1,0 +1,76 @@
+﻿
+@model IEnumerable<CourseModel>
+@{
+    ViewData["Title"] = "View Teachers";
+}
+
+<div class="col-lg-12 grid-margin stretch-card" style="padding-top: 2%">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Teachers Detail</h4>
+            @if (User.IsInRole("SuperAdmin"))
+            {
+            <a class=" btn btn-primary btn-md " asp-action="CreateCourse" asp-controller="Course">
+                New Course
+            </a>
+            }
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                Course Code
+                            </th>
+                            <th>
+                                Course Title
+                            </th>
+                            <th>
+                                Credit Hours
+                            </th>
+                            <th>
+                                Department Name
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            @foreach (var user in Model)
+                            {
+                                <tr>
+                                    <td class="py-1">
+                                        @user.CourseCode
+                                    </td>
+                                    <td>
+                                        @user.CourseTitle
+                                    </td>
+                                    <td>
+                                        @user.CourseCreditHours
+                                    </td>
+                                    <td>
+                                        @user.DepartName
+                                    </td>
+                                    @if (User.IsInRole("SuperAdmin"))
+                                    {
+                                        <td>
+                                            <a class="btn btn-info btn-sm" asp-action="EditDepartment" asp-controller="Department">Edit</a> |
+                                            <a class="btn btn-danger btn-sm" asp-action="DeleteCourse" asp-route-id ="@user.CourseId" asp-controller="Course">Delete</a>
+                                        </td>
+                                    }
+                                </tr>
+                            }
+                        }else
+                        {
+                            <tr>
+                                <td>
+                                    No Courses
+                                </td>
+                               
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

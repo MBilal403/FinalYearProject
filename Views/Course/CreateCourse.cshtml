@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["FullTitle"] = "New Course";
+    var mymessage = ViewBag.MyMessage;
+}
+
+<div class="col-12 grid-margin" style="padding-top: 5%">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Create Course</h4>
+            <form class="form-sample" asp-action="CreateCourse" asp-controller="Course" method="post" enctype="multipart/form-data">
+                <p class="card-description">
+                    Course detail                </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Course Code</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="code" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Course Title</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="title" id="emailInput" required />
+                                <span id="emailResult"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Credit Hour</label>
+                            <div class="col-sm-9">
+                                <input type="Number" class="form-control" name="credithour" id="emailInput" required />
+                                <span id="emailResult"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Department</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" name="department" id="userSelect2">
+                                   
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Make an AJAX request to retrieve user data
+        $.ajax({
+            url: 'https://localhost:7031/department/ActiveDepartments', // Replace with the appropriate API endpoint URL
+            type: 'GET',
+            success: function (users) {
+                // Extract an array of options using map() function
+                console.log(users);
+                var options = users.map(function (user) {
+                    return $(`<option value="${user.departId}">${user.departName}</option>`);
+                });
+                // Append the options to the select element
+                $('#userSelect2').append(options);
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log('Error retrieving user data: ' + errorThrown);
+            }
+        });
+    });
+</script>
