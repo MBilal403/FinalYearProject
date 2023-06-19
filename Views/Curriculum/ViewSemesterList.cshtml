@@ -1,0 +1,21 @@
+﻿@model IEnumerable<SPModel>
+
+
+<div class="container-fluid page-body-wrapper full-page-wrapper">
+    <div class="main-panel w-100  documentation">
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                @foreach(var semester in Model)
+                {
+                    
+                <div class="row">
+                    <div class="col-12 pt-5">
+                        <a class="btn btn-primary" asp-route-id="@semester.SPId" asp-action="ViewSemester" asp-controller="Curriculum">Semester @semester.SemesterFId</a>
+                    </div>
+                </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
