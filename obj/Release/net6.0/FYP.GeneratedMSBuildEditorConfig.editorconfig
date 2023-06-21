@@ -48,8 +48,36 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxWZXJpZmljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Bilal/FinalYearProject/Views/Courses/ViewCourses.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlc1xWaWV3Q291cnNlcy5jc2h0bWw=
+[D:/Bilal/FinalYearProject/Views/Course/CreateCourse.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXENyZWF0ZUNvdXJzZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Bilal/FinalYearProject/Views/Course/EditCourse.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXEVkaXRDb3Vyc2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Bilal/FinalYearProject/Views/Course/ViewCourses.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXFZpZXdDb3Vyc2VzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Bilal/FinalYearProject/Views/Curriculum/CreateSemester.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VycmljdWx1bVxDcmVhdGVTZW1lc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Bilal/FinalYearProject/Views/Curriculum/SemesterDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VycmljdWx1bVxTZW1lc3RlckRldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Bilal/FinalYearProject/Views/Curriculum/ViewCurriculum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VycmljdWx1bVxWaWV3Q3VycmljdWx1bS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Bilal/FinalYearProject/Views/Curriculum/ViewSemester.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VycmljdWx1bVxWaWV3U2VtZXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Bilal/FinalYearProject/Views/Curriculum/ViewSemesterList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VycmljdWx1bVxWaWV3U2VtZXN0ZXJMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Bilal/FinalYearProject/Views/Dashboard/Error-500.cshtml]

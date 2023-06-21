@@ -7,7 +7,7 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Students Detail</h4>
-            @if (User.IsInRole("Admin"))
+            @if (User.IsInRole("SuperAdmin"))
             {
             <a class=" btn btn-primary btn-md " asp-action="CreateStudent" asp-controller="Student">
                 New Student
@@ -49,7 +49,7 @@
                                     <td>
                                         @user.CreatedAt.ToString("dd-MM-yyyy")
                                     </td>
-                                    @if (User.IsInRole("Admin"))
+                                    @if (User.IsInRole("SuperAdmin"))
                                     {
                                         <td>
                                             <a class="btn btn-info btn-sm" asp-action="EditDepartment" asp-controller="Department">Edit</a> |

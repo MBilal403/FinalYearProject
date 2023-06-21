@@ -72,6 +72,7 @@ namespace FYP.Controllers
                 string contactNumber = form["contactnumber"];
                 string city = form["city"];
                 string session = form["session"];
+                string department = form["department"];
                 string program = form["program"];
                 string semester = form["semester"];
                 // Perform validation
@@ -91,6 +92,8 @@ namespace FYP.Controllers
                 {
                     FullName = fullName,
                     Email = emailAddress,
+                    RollNumber = rollNumber,
+                    FatherName = fatherName,
                     Gender = gender,
                     DateOfBirth = DateTime.Parse(dateOfBirth),
                     Address = address,
@@ -100,6 +103,7 @@ namespace FYP.Controllers
                     ImagePath = pathWithBackslashes,
                     Session = session,
                     Password = password,
+                    Department= department,
                     Program = program,
                     Semester = int.Parse(semester),
                     CreatedAt = DateTime.Now,
@@ -111,7 +115,7 @@ namespace FYP.Controllers
                     var jsonRequest = JsonConvert.SerializeObject(dto);
                     var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
 
-                    HttpResponseMessage response = await httpClient.PostAsync(BaseURL.baseURl + "/Student/StudentSignup", content);
+                    HttpResponseMessage response = await httpClient.PostAsync(BaseURL.baseURl + "/Student/Register", content);
 
                     // Check if the response was successful
                     if (response.IsSuccessStatusCode)

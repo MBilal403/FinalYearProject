@@ -126,9 +126,9 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Program</label>
+                            <label class="col-sm-3 col-form-label">Department</label>
                             <div class="col-sm-9">
-                                <select class="form-control" name="program" id="programlist">
+                                <select class="form-control" name="department" id="department">
                              
                                 </select>
                             </div>
@@ -136,68 +136,85 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Semester</label>
+                            <label class="col-sm-3 col-form-label">Program</label>
                             <div class="col-sm-9">
-                                <select class="form-control" name="semester">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
+                                <select class="form-control" name="program" id="program">
                                 </select>
                             </div>
                         </div>
                     </div>
 
                 </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Semester</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="semester">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
             </form>
         </div>
     </div>
 </div>
+
+
 <script>
-    $(document).ready(function () {
+
+ 
         // Make an AJAX request to retrieve user data
-        $.ajax({
-            url: 'https://localhost:7031/auth/TeacherUsers', // Replace with the appropriate API endpoint URL
-            type: 'GET',
-
-            success: function (users) {
-                // Extract an array of options using map() function
-                var options = users.map(function (user) {
-                    return $(`
-<option value="${user.fullName}">${user.fullName}</option>`);
-                });
-
-                // Append the options to the select element
-                $('#programlist').append(options);
-            },
-            error: function (xhr, textStatus, errorThrown) {
-                console.log('Error retrieving user data: ' + errorThrown);
-            }
+        $(document).ready(function () {
+            // Make an AJAX request to retrieve user data
+            $.ajax({
+                url: 'https://localhost:7031/Department/ActiveDepartment', // Replace with the appropriate API endpoint URL
+                type: 'GET',
+                success: function (users) {
+                    // Extract an array of options using map() function
+                    console.log(users);
+                    var options = users.map(function (user) {
+                        return $(`<option value="${user.departName}">${user.departName}</option>`);
+                    });
+                    // Append the options to the select element
+                    $('#department').append(options);
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error retrieving user data: ' + errorThrown);
+                }
+            });
         });
-        $.ajax({
-            url: 'https://localhost:7031/auth/AdminUsers', // Replace with the appropriate API endpoint URL
-            type: 'GET',
-            success: function (users) {
-                // Extract an array of options using map() function
-                var options = users.map(function (user) {
-                    return $(`
-<option value="${user.fullName}">${user.fullName}</option>`);
-                });
 
-                // Append the options to the select element
-                $('#sessionlist').append(options);
-            },
-            error: function (xhr, textStatus, errorThrown) {
-                console.log('Error retrieving user data: ' + errorThrown);
-            }
+        $(document).ready(function () {
+            // Make an AJAX request to retrieve user data
+            $.ajax({
+                url: 'https://localhost:7031/Program/GetAllPrograms', // Replace with the appropriate API endpoint URL
+                type: 'GET',
+                success: function (users) {
+                    // Extract an array of options using map() function
+                    console.log(users);
+                    var options = users.map(function (user) {
+                        return $(`<option value="${user.programName}">${user.programName}</option>`);
+                    });
+                    // Append the options to the select element
+                    $('#program').append(options);
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error retrieving user data: ' + errorThrown);
+                }
+            });
         });
-    });
+      
+        
 
 </script>
